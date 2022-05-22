@@ -1,0 +1,10 @@
+		Votes
+
+Image 1  0
+Image 2  0
+Image 3  1
+Image 4  1
+Image 5  1 ( + Deb)
+Image 6  1
+Image 7  2
+Image 8  3
