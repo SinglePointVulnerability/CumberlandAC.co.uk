@@ -1,4 +1,4 @@
 <?php
-/* About us*/
+/* Index */
 
 ?>
