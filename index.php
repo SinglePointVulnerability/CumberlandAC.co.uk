@@ -13,9 +13,29 @@ function auto_version($file='')
 ?>
 <html>
     <head>
-        <meta http-equiv="refresh" content="8; url='http://cumberland-ac.weebly.com/'" />
+        <!--<meta http-equiv="refresh" content="8; url='http://cumberland-ac.weebly.com/'" />-->
 		<link rel="stylesheet" type="text/css" href="<?php echo auto_version('css/styles.css'); ?>" media="screen" />
 
+		<script>
+		function displayResult(a) {
+			var btnSet1 = "<img class = \"btn btn-Newsletter\" src = \"<?php echo auto_version('img/btn-Newsletter.png'); ?>\">\n" +
+						  "<img class = \"btn btn-Gallery\" src = \"<?php echo auto_version('img/btn-Gallery.png'); ?>\">\n" +
+						  "<img class = \"btn btn-Documents\" src = \"<?php echo auto_version('img/btn-Documents.png'); ?>\">";
+			var btnSet2 = "<img class = \"btn btn-Training\" src = \"<?php echo auto_version('img/btn-Training.png'); ?>\">\n" +
+						  "<img class = \"btn btn-SocialEvents\" src = \"<?php echo auto_version('img/btn-SocialEvents.png'); ?>\">\n" +
+						  "<img class = \"btn btn-Races\" src = \"<?php echo auto_version('img/btn-Races.png'); ?>\">";			
+																 
+			if (a == "btnMed" && (document.getElementById("lvl2-btns").innerHTML == "" || document.getElementById("lvl2-btns").innerHTML == btnSet2)) {
+				document.getElementById("lvl2-btns").innerHTML = btnSet1;				
+			}
+			else if (a == "btnCal" && (document.getElementById("lvl2-btns").innerHTML == "" || document.getElementById("lvl2-btns").innerHTML == btnSet1)) {
+				document.getElementById("lvl2-btns").innerHTML = btnSet2;				
+			}
+			else {
+				document.getElementById("lvl2-btns").innerHTML = "";
+			}
+		}
+		</script>
     </head>
     <body>
 	<div class="parent-container">
@@ -24,11 +44,13 @@ function auto_version($file='')
 		</div>
 		<div class="nav-buttons">
 			<!-- add modified timestamp (php) to file URLs to force cache refresh -->
-			<img class = "btn btn-Med" src = "<?php echo auto_version('img/btn-Med.png'); ?>">
-			<img class = "btn btn-Cal" src = "<?php echo auto_version('img/btn-Cal.png'); ?>">
+			<img class = "btn btn-Med" src = "<?php echo auto_version('img/btn-Med.png'); ?>" onClick="displayResult('btnMed')">
+			<img class = "btn btn-Cal" src = "<?php echo auto_version('img/btn-Cal.png'); ?>" onClick="displayResult('btnCal')">
 			<img class = "btn btn-Champ" src = "<?php echo auto_version('img/btn-Champ.png'); ?>">
 			<img class = "btn btn-Merch" src = "<?php echo auto_version('img/btn-Merch.png'); ?>">
 			<img class = "btn btn-MemArea" src = "<?php echo auto_version('img/btn-MemArea.png'); ?>">
+		</div>
+		<div id="lvl2-btns" class="nav-buttons">
 		</div>
         <div class="coming-soon">New website coming soon :) <br />
             <br />

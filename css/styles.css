@@ -8,7 +8,7 @@
 		position: relative;
 		width: 100%;
 	}
-	.nav-buttons {
+	.lvl1-buttons {
 		position: relative;
 		display: flex;
 	    justify-content: space-between;
