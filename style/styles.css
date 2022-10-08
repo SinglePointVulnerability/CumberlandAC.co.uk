@@ -10,14 +10,36 @@
 	}
 	.nav-buttons {
 		position: relative;
+		display: flex;
+	    justify-content: space-between;
 	}
-	.btn-MemArea {
+	.btn {
 		position: relative;
-		width: 20%;
+		width: 19%;
 	}
 	.btn-MemArea:hover {
 		position: relative;
 		background: url('../img/btn-MemArea-hover.png') no-repeat;
+		background-size: contain;
+	}
+	.btn-Merch:hover {
+		position: relative;
+		background: url('../img/btn-Merch-hover.png') no-repeat;
+		background-size: contain;
+	}
+	.btn-Champ:hover {
+		position: relative;
+		background: url('../img/btn-Champ-hover.png') no-repeat;
+		background-size: contain;
+	}
+	.btn-Cal:hover {
+		position: relative;
+		background: url('../img/btn-Cal-hover.png') no-repeat;
+		background-size: contain;
+	}
+	.btn-Med:hover {
+		position: relative;
+		background: url('../img/btn-Med-hover.png') no-repeat;
 		background-size: contain;
 	}
 	body {
