@@ -13,7 +13,7 @@ function auto_version($file='')
 ?>
 <html>
     <head>
-        <!--<meta http-equiv="refresh" content="8; url='http://cumberland-ac.weebly.com/'" />-->
+        <meta http-equiv="refresh" content="8; url='http://cumberland-ac.weebly.com/'" />
 		<link rel="stylesheet" type="text/css" href="<?php echo auto_version('css/styles.css'); ?>" media="screen" />
 
     </head>
