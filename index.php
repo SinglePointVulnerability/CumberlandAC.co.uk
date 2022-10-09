@@ -13,17 +13,21 @@ function auto_version($file='')
 ?>
 <html>
     <head>
-        <meta http-equiv="refresh" content="8; url='http://cumberland-ac.weebly.com/'" />
+        <meta http-equiv="refresh" content="15; url='http://cumberland-ac.weebly.com/'" />
 		<link rel="stylesheet" type="text/css" href="<?php echo auto_version('css/styles.css'); ?>" media="screen" />
 
 		<script>
 		function displayResult(a) {
-			var btnSet1 = "<img class = \"btn btn-Newsletter\" src = \"<?php echo auto_version('img/btn-Newsletter.png'); ?>\">\n" +
-						  "<img class = \"btn btn-Gallery\" src = \"<?php echo auto_version('img/btn-Gallery.png'); ?>\">\n" +
-						  "<img class = \"btn btn-Documents\" src = \"<?php echo auto_version('img/btn-Documents.png'); ?>\">";
-			var btnSet2 = "<img class = \"btn btn-Training\" src = \"<?php echo auto_version('img/btn-Training.png'); ?>\">\n" +
-						  "<img class = \"btn btn-SocialEvents\" src = \"<?php echo auto_version('img/btn-SocialEvents.png'); ?>\">\n" +
-						  "<img class = \"btn btn-Races\" src = \"<?php echo auto_version('img/btn-Races.png'); ?>\">";			
+			var btnSet1 = "<img class = \"btn btn-lvl2 btn-Newsletter\" src = \"<?php echo auto_version('img/btn-Newsletter.png'); ?>\">\n" +
+						  "<img class = \"btn btn-lvl2 btn-Gallery\" src = \"<?php echo auto_version('img/btn-Gallery.png'); ?>\">\n" +
+						  "<img class = \"btn btn-lvl2 btn-Documents\" src = \"<?php echo auto_version('img/btn-Documents.png'); ?>\">\n" +
+						  "<div class = \"btn\"></div>\n" +
+						  "<div class = \"btn\"></div>\n";
+			var btnSet2 = "<img class = \"btn btn-lvl2 btn-Training\" src = \"<?php echo auto_version('img/btn-Training.png'); ?>\">\n" +
+						  "<img class = \"btn btn-lvl2 btn-SocialEvents\" src = \"<?php echo auto_version('img/btn-SocialEvents.png'); ?>\">\n" +
+						  "<img class = \"btn btn-lvl2 btn-Races\" src = \"<?php echo auto_version('img/btn-Races.png'); ?>\">" +
+						  "<div class = \"btn\"></div>\n" +
+						  "<div class = \"btn\"></div>\n";		
 																 
 			if (a == "btnMed" && (document.getElementById("lvl2-btns").innerHTML == "" || document.getElementById("lvl2-btns").innerHTML == btnSet2)) {
 				document.getElementById("lvl2-btns").innerHTML = btnSet1;				
@@ -44,17 +48,37 @@ function auto_version($file='')
 		</div>
 		<div class="nav-buttons">
 			<!-- add modified timestamp (php) to file URLs to force cache refresh -->
-			<img class = "btn btn-Med" src = "<?php echo auto_version('img/btn-Med.png'); ?>" onClick="displayResult('btnMed')">
-			<img class = "btn btn-Cal" src = "<?php echo auto_version('img/btn-Cal.png'); ?>" onClick="displayResult('btnCal')">
-			<img class = "btn btn-Champ" src = "<?php echo auto_version('img/btn-Champ.png'); ?>">
-			<img class = "btn btn-Merch" src = "<?php echo auto_version('img/btn-Merch.png'); ?>">
-			<img class = "btn btn-MemArea" src = "<?php echo auto_version('img/btn-MemArea.png'); ?>">
+			<img class = "btn btn-lvl1 btn-Med" src = "<?php echo auto_version('img/btn-Med.png'); ?>" onClick="displayResult('btnMed')">
+			<img class = "btn btn-lvl1 btn-Cal" src = "<?php echo auto_version('img/btn-Cal.png'); ?>" onClick="displayResult('btnCal')">
+			<img class = "btn btn-lvl1 btn-Champ" src = "<?php echo auto_version('img/btn-Champ.png'); ?>" onClick="displayResult('')">
+			<img class = "btn btn-lvl1 btn-Merch" src = "<?php echo auto_version('img/btn-Merch.png'); ?>" onClick="displayResult('')">
+			<img class = "btn btn-lvl1 btn-MemArea" src = "<?php echo auto_version('img/btn-MemArea.png'); ?>" onClick="displayResult('')">
 		</div>
 		<div id="lvl2-btns" class="nav-buttons">
 		</div>
-        <div class="coming-soon">New website coming soon :) <br />
-            <br />
-            Click <a href="http://cumberland-ac.weebly.com/">here</a> if you aren't redirected in 8 seconds
+		<div class="txt">
+			<h1>
+				About Us
+			</h1>
+		</div>
+		<div class="txt">
+			<p>
+				We are a friendly, small running club based in Workington, Cumbria. Affiliated in 1983 we have been running for over 30 years.
+				<br>
+				The club normally meets every Tuesday at Workington Leisure Centre, Workington at 5:50pm for a 6:00pm start. 
+				<br>
+				The main group is organised such that runners of a wide range of abilities can run together.
+				​<br>
+				Training sessions take place on Thursday evenings; details of current training can be found on the Training page.
+			</p>
+		</div>
+        <div class="txt coming-soon">
+			<h1>
+				New website coming soon :)
+			</h1>
+            <p>
+				Click <a href="http://cumberland-ac.weebly.com/">here</a> if you aren't redirected in 15 seconds
+			</p>
         </div>
 	</div>
     </body>
