@@ -13,7 +13,7 @@ function auto_version($file='')
 ?>
 <html>
     <head>
-        <meta http-equiv="refresh" content="15; url='http://cumberland-ac.weebly.com/'" />
+        <!--<meta http-equiv="refresh" content="15; url='http://cumberland-ac.weebly.com/'" />-->
 		<link rel="stylesheet" type="text/css" href="<?php echo auto_version('css/styles.css'); ?>" media="screen" />
 
 		<script>
@@ -23,21 +23,22 @@ function auto_version($file='')
 						  "<img class = \"btn btn-lvl2 btn-Documents\" src = \"<?php echo auto_version('img/btn-Documents.png'); ?>\">\n" +
 						  "<div class = \"btn\"></div>\n" +
 						  "<div class = \"btn\"></div>\n";
+						  
 			var btnSet2 = "<img class = \"btn btn-lvl2 btn-Training\" src = \"<?php echo auto_version('img/btn-Training.png'); ?>\">\n" +
 						  "<img class = \"btn btn-lvl2 btn-SocialEvents\" src = \"<?php echo auto_version('img/btn-SocialEvents.png'); ?>\">\n" +
 						  "<img class = \"btn btn-lvl2 btn-Races\" src = \"<?php echo auto_version('img/btn-Races.png'); ?>\">" +
 						  "<div class = \"btn\"></div>\n" +
 						  "<div class = \"btn\"></div>\n";		
 																 
-			if (a == "btnMed" && (document.getElementById("lvl2-btns").innerHTML == "" || document.getElementById("lvl2-btns").innerHTML == btnSet2)) {
-				document.getElementById("lvl2-btns").innerHTML = btnSet1;				
+			if (a == "btnMed") {
+				document.getElementById("lvl2-btns").innerHTML = btnSet1;
 			}
-			else if (a == "btnCal" && (document.getElementById("lvl2-btns").innerHTML == "" || document.getElementById("lvl2-btns").innerHTML == btnSet1)) {
-				document.getElementById("lvl2-btns").innerHTML = btnSet2;				
+			else if (a == "btnCal") {
+				document.getElementById("lvl2-btns").innerHTML = btnSet2;
 			}
 			else {
 				document.getElementById("lvl2-btns").innerHTML = "";
-			}
+			}	
 		}
 		</script>
     </head>
@@ -56,7 +57,7 @@ function auto_version($file='')
 		</div>
 		<div id="lvl2-btns" class="nav-buttons">
 		</div>
-		<div class="txt">
+		<div id="txt-id" class="txt">
 			<h1>
 				About Us
 			</h1>
