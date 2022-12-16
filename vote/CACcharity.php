@@ -92,7 +92,7 @@
 
 <table class="charityRanked">
 	<tr>
-		<th><h1>Cumberland AC - Charity of the Year, 2022 - ranked by votes (top three on display only)</h1></th>
+		<th><h1>Cumberland AC - Charity of the Year, 2023 - ranked by votes (top three on display only)</h1></th>
 	</tr>
 	<tr>
 		<td style="font-size:0.9em;">
@@ -101,7 +101,7 @@
 			$today = time();
 
 			//B: RECORDS Date And Time OF YOUR EVENT
-			$event = mktime(17,0,0,12,25,2021); //this is actually 4pm, however IONOS servers are 1 hour ahead
+			$event = mktime(17,0,0,12,25,2022); //this is actually 4pm, however IONOS servers are 1 hour ahead
 
 			//C: COMPUTES THE HOURS UNTIL THE EVENT.
 			$countdown = ceil(($event-$today)/3600);
@@ -150,7 +150,7 @@
 		</td>
 	</tr>
 <?php
-	require '../DBconn.php';
+	require '../secure/DBconn.php';
 	
 	$sqlCharityByRank = "SELECT VerifiedVote AS charityID, " .
 							   "tblcharities.CharityTitle AS charityTitle, " . 
@@ -196,7 +196,7 @@
 		{
 
 			// open connection to the database
-			require '../DBconn.php';
+			require '../secure/DBconn.php';
 
 			$charityVote = mysqli_real_escape_string($conn, htmlspecialchars($_POST["txtCharity"]));
 			$email = mysqli_real_escape_string($conn, htmlspecialchars($_POST["txtEmail"]));
@@ -405,7 +405,7 @@
 		All email addresses will be deleted the day after the winning charity is announced
 		*/
 function displayCharity($CharityID) {
-	require '../DBconn.php';
+	require '../secure/DBconn.php';
 	
 	$sqlLoadCharity = "SELECT CharityTitle FROM tblcharities WHERE CharityID = " . $CharityID;
 
@@ -428,19 +428,20 @@ function displayCharity($CharityID) {
 		  <th>Charity</th>
 		</tr>
 		<tr class="charityBlurb" onClick='toggleRow(this)'>
-		  <td><img src="img\CitAdv50px.png"/></td>
-		  <td>Copeland Citizens Advice<br>(click for more)</td>
-		  <td class='expanded-row-content hide-row'><img src="img\CitAdv150px.png" />Citizens Advice Copeland is an 
-			independent charity which provides free, confidential, impartial, independent information and advice to
-			people who live and work in the borough of Copeland and their rights and responsibilities.
-			<br><br>For more info please visit: <a href="http://www.citizensadvicecopeland.org.uk">CitizensAdviceCopeland.org.uk</a></td>
+		  <td><img src="img\CalTru50px.png" /></td>
+		  <td>Calvert Trust Lake District<br>(click for more)</td>
+		  <td class='expanded-row-content hide-row'><img src="img\CalTru150px.png" />The charity provides dedicated 
+			facilities so that disabled guests can enjoy outdoor activities in a safe and accessible environment.
+			<br><br>For more info please visit <a href="http://www.calvertlakes.org.uk">CalvertLakes.org.uk</a></td>
 		</tr>
 		<tr class="charityBlurb" onClick='toggleRow(this)'>
-		  <td><img src="img\EvyLfe50px.png" /></td>
-		  <td>Every Life Matters<br>(click for more)</td>
-		  <td class='expanded-row-content hide-row'><img src="img\EvyLfe150px.png" />Promoting Suicide Safer Communities
-		  and providing Suicide Bereavement Support across Cumbria
-		  <br><br>For more info please visit <a href="http://www.every-life-matters.org.uk">Every-Life-Matters.org.uk</a></td>
+		  <td><img src="img\AniCon50px.png" /></td>
+		  <td>Animal Concern Cumbria<br>(click for more)</td>
+		  <td class='expanded-row-content hide-row'><img src="img\AniCon150px.png" />Animal Concern Cumbria is dedicated 
+		    to supporting and caring for animals in need.  They offer a secure and caring environment for animals whose 
+			owners, for whatever reason, are unable to care for them any longer and help them find permanent, loving homes 
+			along with providing support and guidance for owners who wish to keep their animals.
+		<a href="http://www.animalconcerncumbria.org">AnimalConcernCumbria.org</a></td>
 		</tr>
 		<tr class="charityBlurb" onClick='toggleRow(this)'>
 		  <td><img src="img\TeaEvi50px.png" /></td>
@@ -450,41 +451,12 @@ function displayCharity($CharityID) {
 			<br><br>For more info please visit <a href="http://www.teamevie.org">TeamEvie.org</a></td>
 		</tr>
 		<tr class="charityBlurb" onClick='toggleRow(this)'>
-		  <td><img src="img\HenSte50px.png" /></td>
-		  <td>Henderson Suite<br>(click for more)</td>
-		  <td class='expanded-row-content hide-row'><img src="img\HenSte150px.png" />The Henderson suite is a chemotherapy 
-			day unit and treatment area for adult cancer patients in West Cumbria. Funds donated are utilised to improve 
-			patient comfort whilst they are receiving treatment.</td>
-		</tr>
-		<tr class="charityBlurb" onClick='toggleRow(this)'>
-		  <td><img src="img\CalTru50px.png" /></td>
-		  <td>Calvert Trust Lake District<br>(click for more)</td>
-		  <td class='expanded-row-content hide-row'><img src="img\CalTru150px.png" />The charity provides dedicated 
-			facilities so that disabled guests can enjoy outdoor activities in a safe and accessible environment.
-			<br><br>For more info please visit <a href="http://www.calvertlakes.org.uk">CalvertLakes.org.uk</a></td>
-		</tr>
-		<tr class="charityBlurb" onClick='toggleRow(this)'>
-			<td><img src="img\BldBks50px.png" /></td>
-			<td>Blood Bikes Cumbria<br>(Click for more)</td>
-			<td class='expanded-row-content hide-row'><img src="img\BldBks150px.png" />Blood Bikes Cumbria deliver essential blood, urgent medical supplies,
-			free of charge and out of hours for the North Cumbria Integrated Care NHS Foundation Trust between premises in
-			North and West Cumbria and hospitals/laboratories in the Newcastle area. 
-			<br><br>For more info please visit <a href="http://www.bloodbikescumbria.org.uk">BloodBikesCumbria.org.uk</a></td>
-		</tr>
-		<tr class="charityBlurb" onClick='toggleRow(this)'>
-			<td><img src="img\WhtFrs50px.png" /></td>
-			<td>Whitehaven First Responders<br>(Click for more)</td>
-			<td class='expanded-row-content hide-row'><img src="img\WhtFrs150px.png" />Whitehaven First Responders support the North West Ambulance Service
-			(NWAS) by attending 999 calls to provide emergency first aid. They attend calls such as diabetics, fitting, breathing difficulties, chest pain
-			and cardiac arrests. They help to take the strain of the ambulance service and speed up the response times during busy periods.</td>
-		</tr>
-		<tr class="charityBlurb" onClick='toggleRow(this)'>
-			<td><img src="img\FrnMyf50px.png" /></td>
-			<td>Friends of Mayfield School<br>(Click for more)</td>
-			<td class='expanded-row-content hide-row'><img src="img\FrnMyf150px.png" />Friends of Mayfield Primary School is essentially a Parent Teacher
-			Association which also welcomes involvement from members of the local community. We raise funds in order to supply the school with much-needed
-			equipment and curricular support, as well as those all-important "extras" for the children. We also arrange social events, for children and
-			families, to help build the school community.</td>
+		  <td><img src="img\WstHse50px.png" /></td>
+		  <td>West House<br>(click for more)</td>
+		  <td class='expanded-row-content hide-row'><img src="img\WstHse150px.png" />West House are Cumbria’s leading 
+		    care and support provider for adults and children with disabilities. They provide individual, genuine and 
+			caring support and enable all those in our care to lead a fulfilling, happy life in a homely environment. 
+			<br><br>For more info please visit <a href="http://www.westhouse.org.uk">WestHouse.org.uk</a></td>
 		</tr>
 		<tr class="charityBlurb" onClick='toggleRow(this)'>
 			<td><img src="img\GrtNrt50px.png" /></td>
@@ -494,20 +466,28 @@ function displayCharity($CharityID) {
 			<br><br>For more info please visit <a href="http://www.greatnorthairambulance.co.uk">GreatNorthAirAmbulance.co.uk</a></td>
 		</tr>
 		<tr class="charityBlurb" onClick='toggleRow(this)'>
-			<td><img src="img\CldHse50px.png" /></td>
-			<td>Calderwood House<br>(Click for more)</td>
-			<td class='expanded-row-content hide-row'><img src="img\CldHse150px.png" />Calderwood House is a hostel in Egremont providing an innovative
-			solution to homelessness. They provide emergency accommodation and support to help homeless people from all walks of life to get back on their
-			feet. 
-			<br><br>For more info please visit <a href="http://www.calderwoodhouse.co.uk">CalderwoodHouse.co.uk</a></td>
+			<td><img src="img\AndMan50px.png" /></td>
+			<td>Andy's Man Club<br>(Click for more)</td>
+			<td class='expanded-row-content hide-row'><img src="img\AndMan150px.png" />Andy's Man Club aim to eliminate 
+			  the stigma surrounding mental health and create a judgment-free, confidential space where men can be open 
+			  about the storms in their lives. They hold weekly, free-to-attend peer-to-peer support groups for men aged 
+			  over 18. They are opening a Workington in January.
+			<br><br>For more info please visit <a href="http://www.andysmanclub.co.uk">AndysManClub.co.uk</a></td>
 		</tr>
 		<tr class="charityBlurb" onClick='toggleRow(this)'>
-			<td><img src="img\CckMnt50px.png" /></td>
-			<td>Cockermouth Mountain Rescue<br>(Click for more)</td>
-			<td class='expanded-row-content hide-row'><img src="img\CckMnt150px.png" />Cockermouth Mountain Rescue risk their own lives to provide
-			emergency assistance to users of the fells. They mainly operate in the Buttermere, Ennerdale, Lorton and Loweswater valley areas, but also
-			cover the area out to the coast of NW Cumbria. If another team needs their help, in the Lakes or further afield, they will assist.  
-			<br><br>For more info please visit <a href="http://www.cockermouthmrt.org.uk">CockermouthMRT.org.uk</a></td>
+		  <td><img src="img\EvyLfe50px.png" /></td>
+		  <td>Every Life Matters<br>(click for more)</td>
+		  <td class='expanded-row-content hide-row'><img src="img\EvyLfe150px.png" />Promoting Suicide Safer Communities
+		  and providing Suicide Bereavement Support across Cumbria
+		  <br><br>For more info please visit <a href="http://www.every-life-matters.org.uk">Every-Life-Matters.org.uk</a></td>
+		</tr>
+		<tr class="charityBlurb" onClick='toggleRow(this)'>
+		  <td><img src="img\CitAdv50px.png"/></td>
+		  <td>Copeland Citizens Advice<br>(click for more)</td>
+		  <td class='expanded-row-content hide-row'><img src="img\CitAdv150px.png" />Citizens Advice Copeland is an 
+			independent charity which provides free, confidential, impartial, independent information and advice to
+			people who live and work in the borough of Copeland and their rights and responsibilities.
+			<br><br>For more info please visit: <a href="http://www.citizensadvicecopeland.org.uk">CitizensAdviceCopeland.org.uk</a></td>
 		</tr>
 	  </table>
 
