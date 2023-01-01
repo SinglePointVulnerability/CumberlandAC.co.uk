@@ -45,7 +45,7 @@ function auto_version($file='')
     <body>
 	<div class="parent-container">
 		<div class="page-banner">
-			<img class="banner" src="img/main-banner.png"/>
+			<img class="banner" src="img/main-banner.png" onclick="location.href='index.php'"/>
 		</div>
 		<div class="nav-buttons">
 			<!-- add modified timestamp (php) to file URLs to force cache refresh -->
@@ -73,12 +73,12 @@ function auto_version($file='')
 				Training sessions take place on Thursday evenings; details of current training can be found on the Training page.
 			</p>
 		</div>
-        <div class="txt coming-soon">
+        <div class="txt">
 			<h1>
-				New website coming soon :)
+				Link to old site
 			</h1>
             <p>
-				Click <a href="http://cumberland-ac.weebly.com/">here</a> if you aren't redirected in 15 seconds
+				If there's something you can't find here, or you just want to browse the old website, click <a href="http://cumberland-ac.weebly.com/">here</a>
 			</p>
         </div>
 	</div>

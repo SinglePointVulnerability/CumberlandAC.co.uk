@@ -45,7 +45,7 @@ function auto_version($file='')
     <body>
 	<div class="parent-container">
 		<div class="page-banner">
-			<img class="banner" src="img/main-banner.png"/>
+			<img class="banner" src="img/main-banner.png" onclick="location.href='index.php'"/>
 		</div>
 		<div class="nav-buttons">
 			<!-- add modified timestamp (php) to file URLs to force cache refresh -->
