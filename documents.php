@@ -78,9 +78,9 @@ function auto_version($file='')
 				club secretary at <b>[club secretary email]</b>.
 			</p>
 			<ul>
-				<li>Club Constitution</li>
-				<li>Grievance and Disciplinary Policy</li>
-				<li>Club Privacy Notice</li>
+				<li><a href="media/docs/CAC-Club-Constitution.pdf">Club Constitution</a></li>
+				<li><a href="media/docs/CAC-Grievance-And-Disciplinary-Policy.pdf">Grievance and Disciplinary Policy</a></li>
+				<li><a href="media/docs/CAC-Privacy-Notice.pdf">Club Privacy Notice</a></li>
 				<li>Club Committee - Who's Who</li>
 			</ul>
 		</div>
