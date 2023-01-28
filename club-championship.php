@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	
 /* Index*/
 function auto_version($file='')
 {
@@ -65,10 +67,10 @@ function auto_version($file='')
 		<div class="txt">
 			<p>
 				Below is the list of races in the club championships for the 
-				2023 season, some dates will need to be confirmed.
+				2023 season, some dates still need to be confirmed.
 			</p>
 			<h2>
-				Main championship
+				<a href="openChampionshipResults.php">Open Championship</a>
 			</h2>
 			<h3>
 				Short races <i>(under 10 miles)</i>
@@ -105,7 +107,7 @@ function auto_version($file='')
 					<td>Laurie Gribbin</td>
 				</tr>
 				<tr>
-					<td>Lambfoot Looop</td>
+					<td>Lambfoot Loop</td>
 					<td>6.2mi (10km)</td>
 					<td>July (TBC)</td>
 					<td>DAC</td>
@@ -183,7 +185,7 @@ function auto_version($file='')
 				</tr>
 			</table>
 			<h2>
-				Short championship
+				<a href="shortChampionshipResults.php">Short Championship</a>
 			</h2>
 			<table>
 				<tr>
@@ -266,7 +268,7 @@ function auto_version($file='')
 				</tr>
 			</table>
 			<h2>
-				Multi-Terrain championship
+				<a href="MTChallengeResults.php">Multi-Terrain Challenge</a>
 			</h2>
 			<table>
 				<tr>
@@ -276,9 +278,9 @@ function auto_version($file='')
 					<th>Organiser</th>
 				</tr>
 				<tr>
-					<td>Brampton Trail</td>
+					<td>Bampton Trail</td>
 					<td>4.3mi (7km)</td>
-					<td>22nd January</td>
+					<td>8th January</td>
 					<td>Sport in Action</td>
 				</tr>
 				<tr>
@@ -351,6 +353,9 @@ function auto_version($file='')
 			</table>
 
 		</div>
+	<div class="admin-login-banner">
+		<a href="login-form.php">Add Race Times / Admin Login</a>
+	</div>
 	</div>
     </body>
 </html>

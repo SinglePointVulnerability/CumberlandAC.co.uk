@@ -276,9 +276,9 @@ function auto_version($file='')
 					<th>Organiser</th>
 				</tr>
 				<tr>
-					<td>Brampton Trail</td>
+					<td>Bampton Trail</td>
 					<td>4.3mi (7km)</td>
-					<td>22nd January</td>
+					<td>8th January</td>
 					<td>Sport in Action</td>
 				</tr>
 				<tr>

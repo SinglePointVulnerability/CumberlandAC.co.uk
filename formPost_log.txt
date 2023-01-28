@@ -1,0 +1,28 @@
+
+- - - Start of log entries for: 2023-01-24_21-02 UTC (GMT +0000): 
+2023-01-24_21-02 UTC (GMT +0000): Parent page: addRaceTime
+2023-01-24_21-02 UTC (GMT +0000): Field Count: 10. Championship: open
+2023-01-24_21-02 UTC (GMT +0000): Race ID: 185
+2023-01-24_21-02 UTC (GMT +0000): Added to array: Runner Division: 1. Name and ID: 381_Daniel Brew Race Time: 01:23:00
+2023-01-24_21-02 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='185' AND RunnerID='381'. Rows returned: 0
+2023-01-24_21-02 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime) VALUES ('185', '381', '01:23:00')
+2023-01-24_21-02 UTC (GMT +0000): WMA runner age check
+2023-01-24_21-02 UTC (GMT +0000): Runner >=35 on race day.
+2023-01-24_21-02 UTC (GMT +0000): SQL: SELECT tblWMARaceTimes.RaceID, tblWMARaceTimes.RunnerID FROM tblWMARaceTimes WHERE tblWMARaceTimes.RaceID=185 AND tblWMARaceTimes.RunnerID = 381
+2023-01-24_21-02 UTC (GMT +0000): Result not returned in WMA table. Records to be INSERTED.
+2023-01-24_21-02 UTC (GMT +0000): Function calls
+2023-01-24_21-02 UTC (GMT +0000): rankOpenChampDiv1MRace(185)
+
+- - - Start of log entries for: 2023-01-27_07-07 UTC (GMT +0000): 
+2023-01-27_07-07 UTC (GMT +0000): Parent page: addRaceTime
+2023-01-27_07-07 UTC (GMT +0000): Field Count: 10. Championship: open
+2023-01-27_07-07 UTC (GMT +0000): Race ID: 178
+2023-01-27_07-07 UTC (GMT +0000): Added to array: Runner Division: 3. Name and ID: 411_Brenda Elliott Race Time: 00:53:37
+2023-01-27_07-07 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='178' AND RunnerID='411'. Rows returned: 0
+2023-01-27_07-07 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime) VALUES ('178', '411', '00:53:37')
+2023-01-27_07-07 UTC (GMT +0000): WMA runner age check
+2023-01-27_07-07 UTC (GMT +0000): Runner >=35 on race day.
+2023-01-27_07-07 UTC (GMT +0000): SQL: SELECT tblWMARaceTimes.RaceID, tblWMARaceTimes.RunnerID FROM tblWMARaceTimes WHERE tblWMARaceTimes.RaceID=178 AND tblWMARaceTimes.RunnerID = 411
+2023-01-27_07-07 UTC (GMT +0000): Result not returned in WMA table. Records to be INSERTED.
+2023-01-27_07-07 UTC (GMT +0000): Function calls
+2023-01-27_07-07 UTC (GMT +0000): rankOpenChampDiv1MRace(178)

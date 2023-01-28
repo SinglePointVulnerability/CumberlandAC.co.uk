@@ -22,6 +22,11 @@
 		position: relative;
 		width: 100%;
 	}
+	.admin-login-banner {
+		position: relative;
+		width: 100%;
+		text-align: right;
+	}
 	.nav-buttons {
 		position: relative;
 		display: flex;

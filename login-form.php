@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,10 +11,10 @@
 	<body>
 		<div class="login">
 			<h1>Login</h1>
-			<form action="secure/authenticate.php" method="post">
+			<form action="addRaceTime.php" method="post">
 				<label for="username">
 					<i class="fas fa-user"></i>
-				</label>
+				</label>	
 				<input type="text" name="username" placeholder="Username" id="username" required>
 				<label for="password">
 					<i class="fas fa-lock"></i>

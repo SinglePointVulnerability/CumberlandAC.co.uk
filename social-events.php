@@ -67,7 +67,7 @@ function auto_version($file='')
 				Check here for dates and venues for club social events such as the annual presentation evening, Annual General Meetings (AGM), pie and peas night, club BBQ and more
 			</p>
 			<ul>
-				<li>Presentation Evening for the 2022 year - <b>Saturday 28th January @ Hunday Manor</b>, Workington</li>
+				<li>Presentation Evening for the 2022 Championship year - <b>Saturday 4th February @ Golf Club</b>, Whitehaven</li>
 				<li>2023 AGM</li>
 				<li>Pie and Peas Night</li>
 				<li>Club handicap challenge</li>
