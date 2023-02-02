@@ -89,10 +89,10 @@ function auto_version($file='')
 					<td>Sport in Action</td>
 				</tr>
 				<tr>
-					<td>X-Border (Carlisle to Gretna)</td>
+					<td>Lorton</td>
 					<td>6.2mi (10km)</td>
-					<td>5th February</td>
-					<td>Innovation Sports Ltd</td>
+					<td>11th March</td>
+					<td>Friends of Lorton School Events</td>
 				</tr>
 				<tr>
 					<td>Millom Lighthouse</td>
@@ -201,10 +201,10 @@ function auto_version($file='')
 					<td>Sport in Action</td>
 				</tr>
 				<tr>
-					<td>3 Village 5</td>
-					<td>5mi (8km)</td>
-					<td>26th February</td>
-					<td>Sport in Action</td>
+					<td>X-Border (Carlisle to Gretna)</td>
+					<td>6.2mi (10km)</td>
+					<td>5th February</td>
+					<td>Innovation Sports Ltd</td>
 				</tr>
 				<tr>
 					<td>Barepot</td>

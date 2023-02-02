@@ -81,6 +81,7 @@ function auto_version($file='')
 				<li><a href="media/docs/CAC-Club-Constitution.pdf">Club Constitution</a></li>
 				<li><a href="media/docs/CAC-Grievance-And-Disciplinary-Policy.pdf">Grievance and Disciplinary Policy</a></li>
 				<li><a href="media/docs/CAC-Privacy-Notice.pdf">Club Privacy Notice</a></li>
+				<li><a href="media/docs/CAC-Club-Inclusion-Policy.pdf">Club Inclusion Policy</a></li>				
 				<li>Club Committee - Who's Who</li>
 			</ul>
 		</div>

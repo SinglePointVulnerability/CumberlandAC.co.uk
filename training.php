@@ -64,8 +64,32 @@ function auto_version($file='')
 		</div>
 		<div class="txt">
 			<p>
-				Club training will start back at <u>6pm</u> at <u>Lillyhall</u>
-				on <u>Thursday 5th January</u>
+				The club provide a social run that follows different routes but
+				always leaves Workington Leisure Centre every Tuesday at 18:00.
+				The run is open to all club members and every effort is made to
+				accommodate runners of all paces. There are stops to gather
+				everyone back together, which gives plenty opportunity for the
+				faster runners to double back and get a bit of extra mileage in.
+				If you are thinking about joining Cumberland AC the Tuesday
+				social run is a great place to start. We're happy for
+				non-members to come along for a few weeks to see whether
+				Cumberland AC is a good fit for them.
+			</p>
+			<p>
+				Occasionally throughout the year the social run is replaced by
+				one of our 'special' events. This includes a number of handicap
+				races and some gentle intro to off-road running (e.g. the
+				Rannerdale Bluebell run). More info to follow
+			</p>
+			<p>
+				Club training is run by our coaches and is arranged in blocks
+				which focus on a different develop area. This includes
+				threshold training, speed work and everybody's favourite winter
+				hill training. The location varies throughout the year
+				depending on the type of training. The location and plan for
+				each session is currently sent as a weekly e-mail to all
+				members. The <b>current block of training</b> is 'Threshold training
+				which starts at 18:00 from Lillyhall Industrial Estate'. 
 			</p>
 			<p>
 				Please check back here for training updates

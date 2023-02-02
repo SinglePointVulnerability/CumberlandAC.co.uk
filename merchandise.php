@@ -61,11 +61,21 @@ function auto_version($file='')
 			<h1>
 				Club Merchandise
 			</h1>
-			<i>Link out to merchandise in our official club colours</i>
 		</div>
 		<div class="txt">
 			<p>
-				Have a look at what club kit you can buy >> <a href="https://pbteamwear.co.uk/collections/cumberland-ac">Club Merchandise</a> << before placing your order with cacclubkit@yahoo.com
+				Purchase of our official club kit is managed by Gillian, Brenda
+				and Paula. If you want any official kit you can contact them at
+				cacclubkit@yahoo.com. They hold a stock of racing kit (e.g.
+				vests, t-shirts and shorts) in various sizes. They also
+				occasionally place orders for special non-stock items (e.g. the
+				O'Neill's hoodies) that require a minimum order size. Members
+				will be sent an e-mail to gauge interest if we are considering
+				placing an order for non-stock items.
+			</p>
+			<p>
+				There is also a selection of unofficial club branded items
+				available to buy >> <a href="https://pbteamwear.co.uk/collections/cumberland-ac">here</a> << from PB merchandise
 			</p>
 		</div>
 	</div>
