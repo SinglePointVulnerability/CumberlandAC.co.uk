@@ -264,6 +264,7 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 			}
 			echo "</td>";
 		}
+		echo "<td class=\"fontRacePoints\">" . $arrRT["ChampTotal"] . "</td>";
 		echo "</tr>";
 	}
     

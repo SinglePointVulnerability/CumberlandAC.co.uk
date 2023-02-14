@@ -102,7 +102,7 @@ function auto_version($file='')
 		<div class="txt">
 			<p>
 				Below is the list of races in the club championships for the 
-				2023 season, some dates will need to be confirmed.
+				2023 season (some dates still to be confirmed)
 			</p>
 			
 			<table>

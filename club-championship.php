@@ -66,8 +66,8 @@ function auto_version($file='')
 		</div>
 		<div class="txt">
 			<p>
-				Below is the list of races in the club championships for the 
-				2023 season, some dates still need to be confirmed.
+				Below is the list of races in each of the club championships
+				for the 2023 season (some dates still to be confirmed)
 			</p>
 			<h2>
 				<a href="openChampionshipResults.php">Open Championship</a>
@@ -281,62 +281,62 @@ function auto_version($file='')
 					<td>Bampton Trail</td>
 					<td>4.3mi (7km)</td>
 					<td>8th January</td>
-					<td>Sport in Action</td>
+					<td>Fellside Events</td>
 				</tr>
 				<tr>
 					<td>Two Riggs</td>
 					<td>5.6mi (9km)</td>
-					<td>26th February</td>
-					<td>Sport in Action</td>
+					<td>18th February</td>
+					<td>Kong</td>
 				</tr>
 				<tr>
 					<td>Jarret's Jaunt</td>
 					<td>5.9mi (9.5km)</td>
 					<td>March (TBC)</td>
-					<td>CAC</td>
+					<td>CFR</td>
 				</tr>
 				<tr>
 					<td>Isel Cross</td>
 					<td>5.5mi (8.9km)</td>
 					<td>April (TBC)</td>
-					<td>KAC</td>
+					<td>DAC</td>
 				</tr>
 				<tr>
 					<td>Hay O' Trail</td>
 					<td>3.7mi (6km)</td>
 					<td>May (TBC)</td>
-					<td>CAC</td>
+					<td>DAC</td>
 				</tr>
 				<tr>
 					<td>Two Tops Dash</td>
 					<td>6mi (9.7km)</td>
 					<td>31st May</td>
-					<td>Sport in Action</td>
+					<td>NAC</td>
 				</tr>
 				<tr>
 					<td>Blencathra</td>
 					<td>8.1mi (13km)</td>
 					<td>2nd July</td>
-					<td>Sport in Action</td>
+					<td>Eden Runners</td>
 				</tr>
 				<tr>
 					<td>Buttermere Horseshoe - Darren Holloway Memorial Race 
 					(short)</td>
 					<td>13mi (21km)</td>
 					<td>July (TBC)</td>
-					<td>CAC</td>
+					<td>CFR</td>
 				</tr>
 				<tr>
 					<td>Barrow Fell - Keswick Show</td>
 					<td>4mi (6.5km)</td>
 					<td>28th August</td>
-					<td>CAC</td>
+					<td>KAC</td>
 				</tr>
 				<tr>
 					<td>Loweswater Show</td>
 					<td>2.6mi (4.2km)</td>
 					<td>6th September</td>
-					<td>Sport in Action</td>
+					<td>CFR</td>
 				</tr>
 				<tr>
 					<td>Keswick XC</td>
