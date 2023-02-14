@@ -1,6 +1,7 @@
 <?php
 	session_start();
-	
+
+	include('secure/DBconn.php');	
 /* Index*/
 function auto_version($file='')
 {
@@ -75,283 +76,303 @@ function auto_version($file='')
 			<h3>
 				Short races <i>(under 10 miles)</i>
 			</h3>
-			<table>
-				<tr>
-					<th>Race</th>
-					<th>Distance</th>
-					<th>Date</th>
-					<th>Organiser</th>
-				</tr>
-				<tr>
-					<td>Carlisle Resolution</td>
-					<td>6.2mi (10km)</td>
-					<td>22nd January</td>
-					<td>Sport in Action</td>
-				</tr>
-				<tr>
-					<td>Lorton</td>
-					<td>6.2mi (10km)</td>
-					<td>11th March</td>
-					<td>Friends of Lorton School Events</td>
-				</tr>
-				<tr>
-					<td>Millom Lighthouse</td>
-					<td>6.2mi (10km)</td>
-					<td>May (TBC)</td>
-					<td>Millom Striders</td>
-				</tr>
-				<tr>
-					<td>Millom Sea Wall 7 Miler</td>
-					<td>7mi (11.3km)</td>
-					<td>2nd July</td>
-					<td>Laurie Gribbin</td>
-				</tr>
-				<tr>
-					<td>Lambfoot Loop</td>
-					<td>6.2mi (10km)</td>
-					<td>July (TBC)</td>
-					<td>DAC</td>
-				</tr>
-				<tr>
-					<td>Netherhall 10k</td>
-					<td>6.2mi (10km)</td>
-					<td>2nd August</td>
-					<td>NAC</td>
-				</tr>
-				<tr>
-					<td>Wigton 10k</td>
-					<td>6.2mi (10km)</td>
-					<td>October (TBC)</td>
-					<td>Wigton Road Runners</td>
-				</tr>
-			</table>
+<?php
+    // an array of chronological race dates, race names and race championship categories for the current year
+    $arrChronologicalRacesOpenShort = array();
+	$arrChronoRaceOpenShort = array();
+	
+	$sqlChronologicalRacesOpenShort = require('sql/viewChronologicalRacesOpenShort.php');
+
+	// Get the races
+	if(mysqli_multi_query($conn,$sqlChronologicalRacesOpenShort))
+	{
+		do{
+			if($result=mysqli_store_result($conn)){
+				while($row=mysqli_fetch_assoc($result)){
+					array_push($arrChronologicalRacesOpenShort,
+						array(
+							  "RaceDate" => $row["RaceDate"],
+							  "RaceDist" => $row["RaceDist"],
+							  "RaceName" => $row["RaceName"],
+							  "RaceOrganiser" => $row["RaceOrganiser"]
+							 )
+					);
+				}
+				mysqli_free_result($result);
+			}
+			if(mysqli_more_results($conn)) {
+				// do nothing
+			}
+		} while(mysqli_more_results($conn) && mysqli_next_result($conn));
+	}    
+	else {
+		echo "Oops! I couldn't find any Open Championship Short races for $RaceYear!";
+	}
+
+	echo "<table>\n";
+	echo "<tr>\n";
+	echo "<th>Race</th>\n";
+	echo "<th>Distance</th>\n";
+	echo "<th>Date</th>\n";
+    echo "<th>Organiser</th>\n";
+	echo "</tr>\n";
+	
+	//loop through the races array
+	foreach($arrChronologicalRacesOpenShort as $arrChronoRaceOpenShort)
+	{
+		echo "<tr>";			
+		echo "<td>";
+		echo $arrChronoRaceOpenShort["RaceName"];
+		echo "</td>";
+		echo "<td>";
+		echo round($arrChronoRaceOpenShort["RaceDist"],1,PHP_ROUND_HALF_UP) . "Km (" 
+		   . round(($arrChronoRaceOpenShort["RaceDist"]/1.6093),1,PHP_ROUND_HALF_UP) . "Mi)";
+		echo "</td>";
+		echo "<td>";
+			$today = date("Y-m-d");
+			$time = strtotime($arrChronoRaceOpenShort["RaceDate"]);
+			$computationformat = date("Y-m-d",$time);
+			$readableformat = date('D jS F',$time);
+			if($computationformat < $today) {
+				echo "<strike>$readableformat</strike>";
+			} else {
+				echo "$readableformat";
+			}
+		echo "</td>";
+		echo "<td>";
+		echo $arrChronoRaceOpenShort["RaceOrganiser"];
+		echo "</td>";
+		echo "</tr>";
+	}
+	
+	echo "</table>\n";
+
+?>
 			<h3>
 				Long races <i>(10 miles and over)</i>
 			</h3>
-			<table>
-				<tr>
-					<th>Race</th>
-					<th>Distance</th>
-					<th>Date</th>
-					<th>Organiser</th>
-				</tr>
-				<tr>
-					<td>North Lakes Half Marathon</td>
-					<td>13.1mi (21km)</td>
-					<td>2nd January</td>
-					<td>Events Up North</td>
-				</tr>
-				<tr>
-					<td>Netherhall 10m</td>
-					<td>10mi (16.1km)</td>
-					<td>26th February</td>
-					<td>CAC</td>
-				</tr>
-				<tr>
-					<td>Coniston 14</td>
-					<td>14mi (22.5km)</td>
-					<td>25th March</td>
-					<td>Coniston 14</td>
-				</tr>
-				<tr>
-					<td>3 Village 10</td>
-					<td>10mi (16.1km)</td>
-					<td>2nd April</td>
-					<td>Sport in Action</td>
-				</tr>
-				<tr>
-					<td>Keswick Half Marathon`</td>
-					<td>13.1mi (21km)</td>
-					<td>24th September</td>
-					<td>Keswick Rugby Club</td>
-				</tr>
-				<tr>
-					<td>Great Cumbrian Run</td>
-					<td>13.1mi (21km)</td>
-					<td>1st October</td>
-					<td>Better</td>
-				</tr>
-				<tr>
-					<td>Brampton to Carlisle</td>
-					<td>10mi (16.1km)</td>
-					<td>19th November</td>
-					<td>Border Harriers</td>
-				</tr>
-				<tr>
-					<td>Any Marathon Race</td>
-					<td>26.2mi (42.2km)</td>
-					<td>Before 31st December</td>
-					<td>Various</td>
-				</tr>
-			</table>
+<?php
+    // an array of chronological race dates, race names and race championship categories for the current year
+    $arrChronologicalRacesOpenLong = array();
+	$arrChronoRaceOpenLong = array();
+	
+	$sqlChronologicalRacesOpenLong = require('sql/viewChronologicalRacesOpenLong.php');
+
+	// Get the races
+	if(mysqli_multi_query($conn,$sqlChronologicalRacesOpenLong))
+	{
+		do{
+			if($result=mysqli_store_result($conn)){
+				while($row=mysqli_fetch_assoc($result)){
+					array_push($arrChronologicalRacesOpenLong,
+						array(
+							  "RaceDate" => $row["RaceDate"],
+							  "RaceDist" => $row["RaceDist"],
+							  "RaceName" => $row["RaceName"],
+							  "RaceOrganiser" => $row["RaceOrganiser"]
+							 )
+					);
+				}
+				mysqli_free_result($result);
+			}
+			if(mysqli_more_results($conn)) {
+				// do nothing
+			}
+		} while(mysqli_more_results($conn) && mysqli_next_result($conn));
+	}    
+	else {
+		echo "Oops! I couldn't find any Open Championship Long races for $RaceYear!";
+	}
+
+	echo "<table>\n";
+	echo "<tr>\n";
+	echo "<th>Race</th>\n";
+	echo "<th>Distance</th>\n";
+	echo "<th>Date</th>\n";
+    echo "<th>Organiser</th>\n";
+	echo "</tr>\n";
+	
+	//loop through the races array
+	foreach($arrChronologicalRacesOpenLong as $arrChronoRaceOpenLong)
+	{
+		echo "<tr>";			
+		echo "<td>";
+		echo $arrChronoRaceOpenLong["RaceName"];
+		echo "</td>";
+		echo "<td>";
+		echo round($arrChronoRaceOpenLong["RaceDist"],1,PHP_ROUND_HALF_UP) . "Km (" 
+		   . round(($arrChronoRaceOpenLong["RaceDist"]/1.6093),1,PHP_ROUND_HALF_UP) . "Mi)";
+		echo "</td>";
+		echo "<td>";
+			$today = date("Y-m-d");
+			$time = strtotime($arrChronoRaceOpenLong["RaceDate"]);
+			$computationformat = date("Y-m-d",$time);
+			$readableformat = date('D jS F',$time);
+			if($computationformat < $today) {
+				echo "<strike>$readableformat</strike>";
+			} else {
+				echo "$readableformat";
+			}
+		echo "</td>";
+		echo "<td>";
+		echo $arrChronoRaceOpenLong["RaceOrganiser"];
+		echo "</td>";
+		echo "</tr>";
+	}
+	
+	echo "</table>\n";
+
+?>
 			<h2>
 				<a href="shortChampionshipResults.php">Short Championship</a>
 			</h2>
-			<table>
-				<tr>
-					<th>Race</th>
-					<th>Distance</th>
-					<th>Date</th>
-					<th>Organiser</th>
-				</tr>
-				<tr>
-					<td>Carlisle Resolution</td>
-					<td>3.1mi (5km)</td>
-					<td>22nd January</td>
-					<td>Sport in Action</td>
-				</tr>
-				<tr>
-					<td>X-Border (Carlisle to Gretna)</td>
-					<td>6.2mi (10km)</td>
-					<td>5th February</td>
-					<td>Innovation Sports Ltd</td>
-				</tr>
-				<tr>
-					<td>Barepot</td>
-					<td>3.1mi (5km)</td>
-					<td>March (TBC)</td>
-					<td>CAC</td>
-				</tr>
-				<tr>
-					<td>Round the Houses</td>
-					<td>4.5mi (7.2km)</td>
-					<td>April (TBC)</td>
-					<td>KAC</td>
-				</tr>
-				<tr>
-					<td>Barepot</td>
-					<td>3.1mi (5km)</td>
-					<td>May (TBC)</td>
-					<td>CAC</td>
-				</tr>
-				<tr>
-					<td>Castle Series - Carlisle</td>
-					<td>3.1mi (5km)</td>
-					<td>31st May</td>
-					<td>Sport in Action</td>
-				</tr>
-				<tr>
-					<td>Festival of Running - Kirkbride</td>
-					<td>6.2mi (10km)</td>
-					<td>2nd July</td>
-					<td>Sport in Action</td>
-				</tr>
-				<tr>
-					<td>Whitehaven Harbourside</td>
-					<td>3.1mi (5km)</td>
-					<td>July (TBC)</td>
-					<td>CAC</td>
-				</tr>
-				<tr>
-					<td>Festival of Running - Workington</td>
-					<td>3.1mi (5km)</td>
-					<td>28th August</td>
-					<td>CAC</td>
-				</tr>
-				<tr>
-					<td>Castle Series - Carlisle</td>
-					<td>3.1mi (5km)</td>
-					<td>6th September</td>
-					<td>Sport in Action</td>
-				</tr>
-				<tr>
-					<td>River Run</td>
-					<td>6.2mi (10km)</td>
-					<td>November (TBC)</td>
-					<td>DH Runners</td>
-				</tr>
-				<tr>
-					<td>Ulverston Pudding Run</td>
-					<td>6.2mi (10km)</td>
-					<td>December (TBC)</td>
-					<td></td>
-				</tr>
-			</table>
+<?php
+    // an array of chronological race dates, race names and race championship categories for the current year
+    $arrChronologicalRacesShort = array();
+	$arrChronoRaceShort = array();
+	
+	$sqlChronologicalRacesShort = require('sql/viewChronologicalRacesShort.php');
+
+	// Get the races
+	if(mysqli_multi_query($conn,$sqlChronologicalRacesShort))
+	{
+		do{
+			if($result=mysqli_store_result($conn)){
+				while($row=mysqli_fetch_assoc($result)){
+					array_push($arrChronologicalRacesShort,
+						array(
+							  "RaceDate" => $row["RaceDate"],
+							  "RaceDist" => $row["RaceDist"],
+							  "RaceName" => $row["RaceName"],
+							  "RaceOrganiser" => $row["RaceOrganiser"]
+							 )
+					);
+				}
+				mysqli_free_result($result);
+			}
+			if(mysqli_more_results($conn)) {
+				// do nothing
+			}
+		} while(mysqli_more_results($conn) && mysqli_next_result($conn));
+	}    
+	else {
+		echo "Oops! I couldn't find any Short Championship races for $RaceYear!";
+	}
+
+	echo "<table>\n";
+	echo "<tr>\n";
+	echo "<th>Race</th>\n";
+	echo "<th>Distance</th>\n";
+	echo "<th>Date</th>\n";
+    echo "<th>Organiser</th>\n";
+	echo "</tr>\n";
+	
+	//loop through the races array
+	foreach($arrChronologicalRacesShort as $arrChronoRaceShort)
+	{
+		echo "<tr>";			
+		echo "<td>";
+		echo $arrChronoRaceShort["RaceName"];
+		echo "</td>";
+		echo "<td>";
+		echo round($arrChronoRaceShort["RaceDist"],1,PHP_ROUND_HALF_UP) . "Km (" 
+		   . round(($arrChronoRaceShort["RaceDist"]/1.6093),1,PHP_ROUND_HALF_UP) . "Mi)";
+		echo "</td>";
+		echo "<td>";
+			$today = date("Y-m-d");
+			$time = strtotime($arrChronoRaceShort["RaceDate"]);
+			$computationformat = date("Y-m-d",$time);
+			$readableformat = date('D jS F',$time);
+			if($computationformat < $today) {
+				echo "<strike>$readableformat</strike>";
+			} else {
+				echo "$readableformat";
+			}
+		echo "</td>";
+		echo "<td>";
+		echo $arrChronoRaceShort["RaceOrganiser"];
+		echo "</td>";
+		echo "</tr>";
+	}
+	
+	echo "</table>\n";
+
+?>
 			<h2>
 				<a href="MTChallengeResults.php">Multi-Terrain Challenge</a>
 			</h2>
-			<table>
-				<tr>
-					<th>Race</th>
-					<th>Distance</th>
-					<th>Date</th>
-					<th>Organiser</th>
-				</tr>
-				<tr>
-					<td>Bampton Trail</td>
-					<td>4.3mi (7km)</td>
-					<td>8th January</td>
-					<td>Fellside Events</td>
-				</tr>
-				<tr>
-					<td>Two Riggs</td>
-					<td>5.6mi (9km)</td>
-					<td>18th February</td>
-					<td>Kong</td>
-				</tr>
-				<tr>
-					<td>Jarret's Jaunt</td>
-					<td>5.9mi (9.5km)</td>
-					<td>March (TBC)</td>
-					<td>CFR</td>
-				</tr>
-				<tr>
-					<td>Isel Cross</td>
-					<td>5.5mi (8.9km)</td>
-					<td>April (TBC)</td>
-					<td>DAC</td>
-				</tr>
-				<tr>
-					<td>Hay O' Trail</td>
-					<td>3.7mi (6km)</td>
-					<td>May (TBC)</td>
-					<td>DAC</td>
-				</tr>
-				<tr>
-					<td>Two Tops Dash</td>
-					<td>6mi (9.7km)</td>
-					<td>31st May</td>
-					<td>NAC</td>
-				</tr>
-				<tr>
-					<td>Blencathra</td>
-					<td>8.1mi (13km)</td>
-					<td>2nd July</td>
-					<td>Eden Runners</td>
-				</tr>
-				<tr>
-					<td>Buttermere Horseshoe - Darren Holloway Memorial Race 
-					(short)</td>
-					<td>13mi (21km)</td>
-					<td>July (TBC)</td>
-					<td>CFR</td>
-				</tr>
-				<tr>
-					<td>Barrow Fell - Keswick Show</td>
-					<td>4mi (6.5km)</td>
-					<td>28th August</td>
-					<td>KAC</td>
-				</tr>
-				<tr>
-					<td>Loweswater Show</td>
-					<td>2.6mi (4.2km)</td>
-					<td>6th September</td>
-					<td>CFR</td>
-				</tr>
-				<tr>
-					<td>Keswick XC</td>
-					<td>4.3 - 5.6mi (7 - 9km)</td>
-					<td>November (TBC)</td>
-					<td>DH Runners</td>
-				</tr>
-				<tr>
-					<td>Workington XC</td>
-					<td>4.3 - 5.6mi (7 - 9km)</td>
-					<td>December (TBC)</td>
-					<td></td>
-				</tr>
-			</table>
+<?php
+    // an array of chronological race dates, race names and race championship categories for the current year
+    $arrChronologicalRacesMT = array();
+	$arrChronoRaceMT = array();
+	
+	$sqlChronologicalRacesMT = require('sql/viewChronologicalRacesMT.php');
 
+	// Get the races
+	if(mysqli_multi_query($conn,$sqlChronologicalRacesMT))
+	{
+		do{
+			if($result=mysqli_store_result($conn)){
+				while($row=mysqli_fetch_assoc($result)){
+					array_push($arrChronologicalRacesMT,
+						array(
+							  "RaceDate" => $row["RaceDate"],
+							  "RaceDist" => $row["RaceDist"],
+							  "RaceName" => $row["RaceName"],
+							  "RaceOrganiser" => $row["RaceOrganiser"]
+							 )
+					);
+				}
+				mysqli_free_result($result);
+			}
+			if(mysqli_more_results($conn)) {
+				// do nothing
+			}
+		} while(mysqli_more_results($conn) && mysqli_next_result($conn));
+	}    
+	else {
+		echo "Oops! I couldn't find any MT Challenge races for $RaceYear!";
+	}
+
+	echo "<table>\n";
+	echo "<tr>\n";
+	echo "<th>Race</th>\n";
+	echo "<th>Distance</th>\n";
+	echo "<th>Date</th>\n";
+    echo "<th>Organiser</th>\n";
+	echo "</tr>\n";
+	
+	//loop through the races array
+	foreach($arrChronologicalRacesMT as $arrChronoRaceMT)
+	{
+		echo "<tr>";			
+		echo "<td>";
+		echo $arrChronoRaceMT["RaceName"];
+		echo "</td>";
+		echo "<td>";
+		echo round($arrChronoRaceMT["RaceDist"],1,PHP_ROUND_HALF_UP) . "Km (" 
+		   . round(($arrChronoRaceMT["RaceDist"]/1.6093),1,PHP_ROUND_HALF_UP) . "Mi)";
+		echo "</td>";
+		echo "<td>";
+			$today = date("Y-m-d");
+			$time = strtotime($arrChronoRaceMT["RaceDate"]);
+			$computationformat = date("Y-m-d",$time);
+			$readableformat = date('D jS F',$time);
+			if($computationformat < $today) {
+				echo "<strike>$readableformat</strike>";
+			} else {
+				echo "$readableformat";
+			}
+		echo "</td>";
+		echo "<td>";
+		echo $arrChronoRaceMT["RaceOrganiser"];
+		echo "</td>";
+		echo "</tr>";
+	}
+	
+	echo "</table>\n";
+
+?>
 		</div>
 	<div class="admin-login-banner">
 		<a href="login-form.php">Add Race Times / Admin Login</a>
