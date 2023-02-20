@@ -573,7 +573,7 @@ runnerNotWMAEligible:
 //
 // START
 function rankOpenChampDiv1MRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -612,7 +612,7 @@ function rankOpenChampDiv1MRace($RID) {
 //
 // START    
 function setOpenChampDiv1MRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -643,7 +643,7 @@ function setOpenChampDiv1MRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankOpenChampDiv1FRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -682,7 +682,7 @@ function rankOpenChampDiv1FRace($RID) {
 //
 // START    
 function setOpenChampDiv1FRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -713,7 +713,7 @@ function setOpenChampDiv1FRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankOpenChampDiv2MRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -751,7 +751,7 @@ function rankOpenChampDiv2MRace($RID) {
 //
 // START    
 function setOpenChampDiv2MRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -782,7 +782,7 @@ function setOpenChampDiv2MRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankOpenChampDiv2FRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -820,7 +820,7 @@ function rankOpenChampDiv2FRace($RID) {
 //
 // START    
 function setOpenChampDiv2FRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -851,7 +851,7 @@ function setOpenChampDiv2FRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankOpenChampDiv3MRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -889,7 +889,7 @@ function rankOpenChampDiv3MRace($RID) {
 //
 // START    
 function setOpenChampDiv3MRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -920,7 +920,7 @@ function setOpenChampDiv3MRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankOpenChampDiv3FRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -958,7 +958,7 @@ function rankOpenChampDiv3FRace($RID) {
 //
 // START    
 function setOpenChampDiv3FRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog;
     
@@ -988,7 +988,7 @@ function setOpenChampDiv3FRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankOpenChampWMAMRace($RID) {    //
-    require 'DBconn.php';   //
+    require 'secure/DBconn.php';   //
 
 	global $tDateFormat, $myLog;
     
@@ -1026,7 +1026,7 @@ function rankOpenChampWMAMRace($RID) {    //
 //
 // START    
 function setOpenChampWMAMRacePoints($RaceID,$RunnerID,$Rank) {    //
-    require 'DBconn.php';   //
+    require 'secure/DBconn.php';   //
 
 	global $tDateFormat, $myLog;
     
@@ -1055,7 +1055,7 @@ function setOpenChampWMAMRacePoints($RaceID,$RunnerID,$Rank) {    //
 //
 // START
 function rankOpenChampWMAFRace($RID) {    //
-    require 'DBconn.php';   //
+    require 'secure/DBconn.php';   //
 
 	global $tDateFormat, $myLog;
     
@@ -1093,7 +1093,7 @@ function rankOpenChampWMAFRace($RID) {    //
 //
 // START    
 function setOpenChampWMAFRacePoints($RaceID,$RunnerID,$Rank) {    //
-    require 'DBconn.php';   //
+    require 'secure/DBconn.php';   //
 
 	global $tDateFormat, $myLog;
     
@@ -1124,7 +1124,7 @@ function setOpenChampWMAFRacePoints($RaceID,$RunnerID,$Rank) {    //
 //
 // START
 function rankOpenChampLadiesRace($RID) {    //
-    require 'DBconn.php';   //
+    require 'secure/DBconn.php';   //
     
     // the second SELECT statement is important as it returns the results of the stored procedure //
     $sqlRankLadies = 'CALL proc_openChamp_ladies_rank('.$RID.'); SELECT RaceID, RunnerID, RaceTime, rank;'; //
@@ -1155,7 +1155,7 @@ function rankOpenChampLadiesRace($RID) {    //
 //
 // START    
 function setOpenChampLadiesRacePoints($RaceID,$RunnerID,$Rank) {    //
-    require 'DBconn.php';   //
+    require 'secure/DBconn.php';   //
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1183,7 +1183,7 @@ function setOpenChampLadiesRacePoints($RaceID,$RunnerID,$Rank) {    //
 //
 function rankRaceTimes($RID) {
     // open and close a separate DB connection within each function.   
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // This will allocate all runners of a race the correct points, but will not account for ties
     $sqlRankRaceTimes = "SET @r=101; UPDATE tblRaceTimes SET RacePoints= @r:= (@r-1) WHERE RaceID = $RID ORDER BY RaceTime ASC;";  
@@ -1205,7 +1205,7 @@ function rankRaceTimes($RID) {
 //    
 function rankRaceTies($RID) {    
     // open and close a separate DB connection within each function.
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // This will select the Max race points for each tied time in this race (if there are any!)
     //   It selects the max points because, in a tie situation, the maximum points are given to all runners with that time
@@ -1245,7 +1245,7 @@ function rankRaceTies($RID) {
 function champTotalPoints($RID)
 {
     // open and close a separate DB connection within each function.
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tDateFormat, $myLog, $RaceYear;
     
@@ -1560,7 +1560,7 @@ function champTotalPoints($RID)
 //
 // START
 function rankShortChampFRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // the second SELECT statement is important as it returns the results of the stored procedure
     $sqlRankF = 'CALL proc_shortChamp_F_rank('.$RID.'); SELECT RaceID, RunnerID, RaceTime, rank;';
@@ -1591,7 +1591,7 @@ function rankShortChampFRace($RID) {
 //
 // START    
 function setShortChampFRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1615,7 +1615,7 @@ function setShortChampFRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankShortChampMRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // the second SELECT statement is important as it returns the results of the stored procedure
     $sqlRankM = 'CALL proc_shortChamp_M_rank('.$RID.'); SELECT RaceID, RunnerID, RaceTime, rank;';
@@ -1646,7 +1646,7 @@ function rankShortChampMRace($RID) {
 //
 // START    
 function setShortChampMRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1671,7 +1671,7 @@ function setShortChampMRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankShortChampDiv3MRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tLogWrite, $myLog, $tDateFormat;  
     
@@ -1706,7 +1706,7 @@ function rankShortChampDiv3MRace($RID) {
 //
 // START    
 function setShortChampDiv3MRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1730,7 +1730,7 @@ function setShortChampDiv3MRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankShortChampDiv3FRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
  
 	global $tLogWrite, $myLog, $tDateFormat;  
 	
@@ -1765,7 +1765,7 @@ function rankShortChampDiv3FRace($RID) {
 //
 // START    
 function setShortChampDiv3FRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1789,7 +1789,7 @@ function setShortChampDiv3FRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankShortChampDiv2MRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tLogWrite, $myLog, $tDateFormat;     
     // the second SELECT statement is important as it returns the results of the stored procedure
@@ -1823,7 +1823,7 @@ function rankShortChampDiv2MRace($RID) {
 //
 // START    
 function setShortChampDiv2MRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1847,7 +1847,7 @@ function setShortChampDiv2MRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankShortChampDiv2FRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tLogWrite, $myLog, $tDateFormat;     
     // the second SELECT statement is important as it returns the results of the stored procedure
@@ -1881,7 +1881,7 @@ function rankShortChampDiv2FRace($RID) {
 //
 // START    
 function setShortChampDiv2FRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1906,7 +1906,7 @@ function setShortChampDiv2FRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankShortChampDiv1MRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tLogWrite, $myLog, $tDateFormat;     
     // the second SELECT statement is important as it returns the results of the stored procedure
@@ -1940,7 +1940,7 @@ function rankShortChampDiv1MRace($RID) {
 //
 // START    
 function setShortChampDiv1MRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -1964,7 +1964,7 @@ function setShortChampDiv1MRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankShortChampDiv1FRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
 
 	global $tLogWrite, $myLog, $tDateFormat;     
     // the second SELECT statement is important as it returns the results of the stored procedure
@@ -1998,7 +1998,7 @@ function rankShortChampDiv1FRace($RID) {
 //
 // START    
 function setShortChampDiv1FRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -2031,7 +2031,7 @@ function setShortChampDiv1FRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankMTChallMRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // the second SELECT statement is important as it returns the results of the stored procedure
     $sqlRankMTChallM = 'CALL proc_MTChall_M_rank('.$RID.'); SELECT RaceID, RunnerID, RaceTime, rank;';
@@ -2062,7 +2062,7 @@ function rankMTChallMRace($RID) {
 //
 // START    
 function setMTChallMRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
@@ -2087,7 +2087,7 @@ function setMTChallMRacePoints($RaceID,$RunnerID,$Rank) {
 //
 // START
 function rankMTChallFRace($RID) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // the second SELECT statement is important as it returns the results of the stored procedure
     $sqlRankMTChallF = 'CALL proc_MTChall_F_rank('.$RID.'); SELECT RaceID, RunnerID, RaceTime, rank;';
@@ -2118,7 +2118,7 @@ function rankMTChallFRace($RID) {
 //
 // START    
 function setMTChallFRacePoints($RaceID,$RunnerID,$Rank) {
-    require 'DBconn.php';
+    require 'secure/DBconn.php';
     
     // using a SQL stored procedure so DB can check if a record already exists for this RaceID, RunnerID combo before inserting a new record
     
