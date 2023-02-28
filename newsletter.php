@@ -59,7 +59,7 @@ function auto_version($file='')
 		</div>
 		<div id="txt-id" class="txt">
 			<h1>
-				Club newsletter
+				Cumberland AC Newsletter
 			</h1>
 			<i>Reminders, experiences, funny stories and some serious stuff that we feel needs to be broadcast to you, our members</i>
 		</div>
@@ -68,8 +68,10 @@ function auto_version($file='')
 				Find archived copies of published newsletters right here, instead of having to rifle through your emails
 			</p>
 			<p>
-				Wow, such empty!
-				<br>We haven't uploaded any newsletters yet, but keep your eyes peeled, we're working on it
+				<h2>
+					Newsletter Feb '23
+				</h2>
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-02-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-02.pdf'">
 			</p>
 		</div>
 	</div>
