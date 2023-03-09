@@ -335,7 +335,9 @@ INNER JOIN tempTblWMA AS source ON dest.RunnerID = source.RunnerID
 	AND dest.RaceID = source.RaceID
 
 SET dest.WMARaceTime = source.WMAAdjustedTime
-	,dest.WMARunnerLevel = source.WMAFactor";
+	,dest.WMARunnerLevel = source.WMAFactor;
+
+DROP TEMPORARY TABLE tempTblWMA;";
             }
         }
         else
