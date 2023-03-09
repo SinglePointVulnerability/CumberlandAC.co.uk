@@ -11,7 +11,7 @@
 	<body>
 		<div class="login">
 			<h1>Login</h1>
-			<form action="addRaceTime.php" method="post">
+			<form action="secure/authenticate.php" method="post">
 				<label for="username">
 					<i class="fas fa-user"></i>
 				</label>	
@@ -23,5 +23,11 @@
 				<input type="submit" value="Login">
 			</form>
 		</div>
+        <table>
+			<tr>
+				<td><br><a href="index.php">Back</a></td>
+			</tr>
+            <span id="errorBox"></span>
+		</table>
 	</body>
 </html>

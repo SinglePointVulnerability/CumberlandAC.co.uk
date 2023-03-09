@@ -1,6 +1,5 @@
 <?php
 	session_start();
-
 	include('secure/DBconn.php');	
 /* Index*/
 function auto_version($file='')
@@ -375,7 +374,7 @@ function auto_version($file='')
 ?>
 		</div>
 	<div class="admin-login-banner">
-		<a href="login-form.php">Add Race Times / Admin Login</a>
+		<a href="addRaceTime.php">Admin Login</a>
 	</div>
 	</div>
     </body>
