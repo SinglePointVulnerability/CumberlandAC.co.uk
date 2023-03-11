@@ -374,7 +374,7 @@ function auto_version($file='')
 ?>
 		</div>
 	<div class="admin-login-banner">
-		<a href="addRaceTime.php">Admin Login</a>
+		<a href="adminLanding.php">Admin Login</a>
 	</div>
 	</div>
     </body>

@@ -444,7 +444,7 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
 ?>
         <table>
 			<tr>
-				<td><a href="index.php">Back</a></td>
+				<td><a href="adminLanding.php">Back</a></td>
 				<td><a href="logout.php">Logout</a></td>
 			</tr>
             <span id="errorBox"></span>
