@@ -65,19 +65,20 @@ function auto_version($file='')
 		</div>
 		<div class="txt">
 			<p>
-				Below are links to documents that outline how we function as a 
-				club, including the rules under which we operate; they're here 
-				to protect club members, club officers and generally help things 
-				run smoothly.
+				Below are links to our membership form and other documents that
+				outline how we function as a club, including the rules under
+				which we operate; they're here to protect club members, club
+				officers and generally help things run smoothly.
 			</p>
 			<p>
-				Some of the documents are private to Cumberland AC members only,
-				if you can't see the document you expect, please make sure
-				you're logged in to the <b>Members Area</b>. If you're logged in
-				and still can't see the document you expect, please contact the
-				club secretary at <b>[club secretary email]</b>.
+				<s>Some of the documents are private to Cumberland AC members
+				only, if you can't see the document you expect, please make
+				sure you're logged in to the <b>Members Area</b>.</s><br>
+				If you can't see the document you expect, please contact the
+				club secretary at <b>wilson01925@hotmail.com</b>.
 			</p>
 			<ul>
+				<li><a href="media/docs/Membership-Form.pdf">Membership Form</a></li>
 				<li><a href="media/docs/CAC-Club-Constitution.pdf">Club Constitution</a></li>
 				<li><a href="media/docs/CAC-Grievance-And-Disciplinary-Policy.pdf">Grievance and Disciplinary Policy</a></li>
 				<li><a href="media/docs/CAC-Privacy-Notice.pdf">Club Privacy Notice</a></li>

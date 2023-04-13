@@ -35,6 +35,8 @@
 				The main group is organised such that runners of a wide range of abilities can run together.
 				​<br>
 				Training sessions take place on Thursday evenings; details of current training can be found on the Training page.
+				<br>
+				Thinking of joining us? Find our membership form <a href = "documents.php"><b>here</b></a>
 			</p>
 		</div>
         <div class="txt">
