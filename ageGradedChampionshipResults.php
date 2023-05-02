@@ -337,14 +337,14 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 
 		
 			// Get the race times
-			if(mysqli_multi_query($conn,"SELECT RunnerID, RaceID, RaceTime, (101 - rank_division_gender_split(RunnerID, RaceID, RaceTime)) AS RacePoints FROM `tblRaceTimes` WHERE RunnerID = " . $arrRT["RunnerID"] . " AND RaceID = " . $arrRace["RaceID"]))
+			if(mysqli_multi_query($conn,"SELECT RaTi.RunnerID, RaTi.RaceID, RaTi.MastersRaceTime, (101 - rank_masters_gender_split(RaTi.RunnerID, Ru.RunnerSex, RaTi.RaceID, RaTi.MastersRaceTime)) AS MastersRacePoints FROM tblRaceTimes RaTi LEFT JOIN tblRunners Ru ON RaTi.RunnerID = Ru.RunnerID WHERE RaTi.RunnerID = " . $arrRT["RunnerID"] . " AND RaTi.RaceID = " . $arrRace["RaceID"]))
 			{
 				do{
 					if($result=mysqli_store_result($conn)){
 						while($row=mysqli_fetch_assoc($result)){
 							//output runner details associated with that race
-							echo "<div class=\"fontRaceTime\" style='display:inline'>" . $row["RaceTime"] . "</div>\n";
-							echo "<div class=\"fontRacePoints\" style='display:inline'>(" . $row["RacePoints"] . ")</div>\n";
+							echo "<div class=\"fontRaceTime\" style='display:inline'>" . $row["MastersRaceTime"] . "</div>\n";
+							echo "<div class=\"fontRacePoints\" style='display:inline'>(" . $row["MastersRacePoints"] . ")</div>\n";
 						}
 						mysqli_free_result($result);
 					}
