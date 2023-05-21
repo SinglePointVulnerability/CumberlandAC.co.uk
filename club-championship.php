@@ -70,7 +70,7 @@ function auto_version($file='')
 				for the 2023 season (some dates still to be confirmed)
 			</p>
 			<h2>
-				<a href="openChampionshipResults.php">Open Championship</a>
+				<a href="openChampionshipResults.php">Open Championship</a> and <a href="ageGradedChampionshipResults.php">Age-Graded Championship</a>
 			</h2>
 			<h3>
 				Short races <i>(under 10 miles)</i>
