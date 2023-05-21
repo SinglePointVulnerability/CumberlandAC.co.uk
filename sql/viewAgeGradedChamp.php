@@ -33,6 +33,7 @@ INNER JOIN (
 	) races ON tblRaceTimes.RaceID = races.RaceID
 WHERE races.ChampYear = 2023
 	AND `Champ Total` > 0
+	AND tblRaceTimes.RunnerAgeOn1stJan >= 35
 ORDER BY races.ChampYear
 	,tblAgeGraded.RunnerSex
 	,tblAgeGraded.`Champ Total` DESC";
