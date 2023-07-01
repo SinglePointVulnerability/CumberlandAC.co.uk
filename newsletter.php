@@ -69,6 +69,12 @@ function auto_version($file='')
 			</p>
 			<p>
 				<h2>
+					Newsletter June '23
+				</h2>
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-06-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-06.pdf'">
+			</p>
+			<p>
+				<h2>
 					Newsletter May '23
 				</h2>
 				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-05-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-05.pdf'">
