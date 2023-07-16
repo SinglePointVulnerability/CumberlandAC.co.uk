@@ -92,29 +92,29 @@ if($whatInfo == "addRaceTime")
         //if there's already a time for this race and runner combo, update instead of insert               
         $sql4 = "SELECT * FROM tblRaceTimes WHERE RaceID='" . $txtRaceID[0] . "' AND RunnerID='" . $txtRunnerID[0] . "'";
                 
-        $result = mysqli_query($conn,$sql4);
+        $result4 = mysqli_query($conn,$sql4);
 
 
 		//calculate and store runner age on race day
 		$sql5 = "SELECT calc_runner_age_on_race_day($txtRunnerID[0], $txtRaceID[0]) AS age_on_race_day";
-		$result = mysqli_query($conn,$sql5);
+		$result5 = mysqli_query($conn,$sql5);
 		// output data of each row
-		while($row = $result->fetch_assoc())
+		while($row = $result5->fetch_assoc())
 		{
 			$runner_age_on_race_day = $row["age_on_race_day"];
 		}
 
 		//calculate and store runner age on 1st Jan
-		$sql5 = "SELECT calc_runner_age_on_1st_jan($txtRunnerID[0], $txtRaceID[0]) AS age_on_1st_jan";
-		$result = mysqli_query($conn,$sql5);
+		$sql6 = "SELECT calc_runner_age_on_1st_jan($txtRunnerID[0], $txtRaceID[0]) AS age_on_1st_jan";
+		$result6 = mysqli_query($conn,$sql6);
 		// output data of each row
-		while($row = $result->fetch_assoc())
+		while($row = $result6->fetch_assoc())
 		{
 			$runner_age_on_1st_jan = $row["age_on_1st_jan"];
 		}		
 		
 		
-        if(mysqli_num_rows($result) > 0)
+        if(mysqli_num_rows($result4) > 0)
         {
             $sql2 = "UPDATE tblRaceTimes SET RaceTime='" . $raceTimeFormat . "', RunnerAgeOnRaceDay=$runner_age_on_race_day, RunnerAgeOn1stJan = $runner_age_on_1st_jan WHERE RaceID='" . $txtRaceID[0] . "' AND RunnerID='" . $txtRunnerID[0] . "'";
         }           
@@ -129,7 +129,7 @@ if($whatInfo == "addRaceTime")
 				"'" . $runner_age_on_1st_jan . "')";
         }
 
-		$tLogWrite = date($tDateFormat) . "SQL: " . $sql4 . ". Rows returned: " . mysqli_num_rows($result) . "\n";
+		$tLogWrite = date($tDateFormat) . "SQL: " . $sql4 . ". Rows returned: " . mysqli_num_rows($result4) . "\n";
 		fwrite($myLog,$tLogWrite);
 		
         if (mysqli_query($conn,$sql2) === TRUE)
@@ -157,16 +157,19 @@ if($whatInfo == "addRaceTime")
 			fwrite($myLog,$tLogWrite);
 
 			// calculate masters time and store in variable
-			$sql_calc_masters_time = "SELECT calc_master_time($txtRunnerID[0], $runner_age_on_race_day, $txtRaceID[0], $raceTimeFormat) AS masters_time";
+			$sql_calc_masters_time = "SELECT calc_masters_time($txtRunnerID[0], $runner_age_on_race_day, $txtRaceID[0], '$raceTimeFormat') AS masters_time";
 			$result = mysqli_query($conn, $sql_calc_masters_time);
+
+			$tLogWrite = date($tDateFormat) . "SQL: $sql_calc_masters_time" . "\n";
+			fwrite($myLog,$tLogWrite);
 
 			while($row = $result->fetch_assoc())
 			{
 				$masters_time = $row["masters_time"];
 			}				
-			
+
 			// update MastersRaceTime column for this runner and race
-			$sql_update_masters_time = "UPDATE tbLRaceTimes SET MastersRaceTime = $masters_time WHERE RaceID='" . $txtRaceID[0] . "' AND RunnerID='" . $txtRunnerID[0] . "'";
+			$sql_update_masters_time = "UPDATE tblRaceTimes SET MastersRaceTime = '$masters_time' WHERE RaceID='" . $txtRaceID[0] . "' AND RunnerID='" . $txtRunnerID[0] . "'";
 
 			if (mysqli_query($conn,$sql_update_masters_time) === TRUE)
 			{
