@@ -93,3 +93,27 @@
 2023-07-16_16-07 UTC (GMT +0000): SQL: SELECT calc_masters_time(1, 38, 179, '00:40:10') AS masters_time
 2023-07-16_16-07 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:39:14' WHERE RaceID='179' AND RunnerID='1'
 - - - End of log entries for: 2023-07-16_16-07
+
+- - - Start of log entries for: 2023-07-16_16-12 UTC (GMT +0000): 
+2023-07-16_16-12 UTC (GMT +0000): Parent page: addRaceTime
+2023-07-16_16-12 UTC (GMT +0000): Field Count: 10. Championship: short
+2023-07-16_16-12 UTC (GMT +0000): Race ID: 205
+2023-07-16_16-12 UTC (GMT +0000): Added to array: Runner Division: 1. Name and ID: 1_Stuart Pyne Race Time: 01:09:01
+2023-07-16_16-12 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='205' AND RunnerID='1'. Rows returned: 0
+2023-07-16_16-12 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('205', '1', '01:09:01', '38', '38')
+2023-07-16_16-12 UTC (GMT +0000): Runner >=35 on race day.
+2023-07-16_16-12 UTC (GMT +0000): SQL: SELECT calc_masters_time(1, 38, 205, '01:09:01') AS masters_time
+2023-07-16_16-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '01:06:30' WHERE RaceID='205' AND RunnerID='1'
+- - - End of log entries for: 2023-07-16_16-12
+
+- - - Start of log entries for: 2023-07-16_16-13 UTC (GMT +0000): 
+2023-07-16_16-13 UTC (GMT +0000): Parent page: addRaceTime
+2023-07-16_16-13 UTC (GMT +0000): Field Count: 10. Championship: MT
+2023-07-16_16-13 UTC (GMT +0000): Race ID: 198
+2023-07-16_16-13 UTC (GMT +0000): Added to array: Runner Division: 1. Name and ID: 1_Stuart Pyne Race Time: 01:13:04
+2023-07-16_16-13 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='198' AND RunnerID='1'. Rows returned: 0
+2023-07-16_16-13 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('198', '1', '01:13:04', '38', '38')
+2023-07-16_16-13 UTC (GMT +0000): Runner >=35 on race day.
+2023-07-16_16-13 UTC (GMT +0000): SQL: SELECT calc_masters_time(1, 38, 198, '01:13:04') AS masters_time
+2023-07-16_16-13 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '' WHERE RaceID='198' AND RunnerID='1'
+- - - End of log entries for: 2023-07-16_16-13

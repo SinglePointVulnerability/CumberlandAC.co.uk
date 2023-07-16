@@ -337,7 +337,7 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 
 		
 			// Get the race times
-			if(mysqli_multi_query($conn,"SELECT RaTi.RunnerID, RaTi.RaceID, RaTi.MastersRaceTime, (101 - rank_masters_gender_split(RaTi.RunnerID, Ru.RunnerSex, RaTi.RaceID, RaTi.MastersRaceTime)) AS MastersRacePoints FROM tblRaceTimes RaTi LEFT JOIN tblRunners Ru ON RaTi.RunnerID = Ru.RunnerID WHERE RaTi.RunnerID = " . $arrRT["RunnerID"] . " AND RaTi.RaceID = " . $arrRace["RaceID"] . " AND RaTi.RunnerAgeOn1stJan >= 35"))
+			if(mysqli_multi_query($conn,"SELECT RaTi.RunnerID, RaTi.RaceID, RaTi.MastersRaceTime, (101 - rank_masters_gender_split(RaTi.RunnerID, Ru.RunnerSex, RaTi.RaceID, RaTi.MastersRaceTime)) AS MastersRacePoints FROM tblRaceTimes RaTi LEFT JOIN tblRunners Ru ON RaTi.RunnerID = Ru.RunnerID WHERE RaTi.RunnerID = " . $arrRT["RunnerID"] . " AND RaTi.RaceID = " . $arrRace["RaceID"] . " AND RaTi.RunnerAgeOn1stJan >= 35 AND RaTi.MastersRaceTime IS NOT NULL"))
 			{
 				do{
 					if($result=mysqli_store_result($conn)){
