@@ -66,6 +66,13 @@ function auto_version($file='')
 		<div class="txt">
 			<p>
 				Find archived copies of published newsletters right here, instead of having to rifle through your emails
+
+			</p>
+			<p>
+				<h2>
+					Newsletter July '23
+				</h2>
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-07-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-07.pdf'">
 			</p>
 			<p>
 				<h2>
