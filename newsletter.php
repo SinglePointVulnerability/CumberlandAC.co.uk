@@ -65,50 +65,51 @@ function auto_version($file='')
 		</div>
 		<div class="txt">
 			<p>
-				Find archived copies of published newsletters right here, instead of having to rifle through your emails
+				<s>Find archived copies of published newsletters right here, instead of having to rifle through your emails</s>
+				In light of a recent development, unfortunately, we have decided to remove the archived newsletters - this is a temporary measure, and they will be back online
 
 			</p>
 			<p>
 				<h2>
 					Newsletter August '23
 				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-08-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-08.pdf'">
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-08-thumb.png'); ?>">
 			</p>
 			<p>
 				<h2>
 					Newsletter July '23
 				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-07-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-07.pdf'">
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-07-thumb.png'); ?>">
 			</p>
 			<p>
 				<h2>
 					Newsletter June '23
 				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-06-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-06.pdf'">
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-06-thumb.png'); ?>">
 			</p>
 			<p>
 				<h2>
 					Newsletter May '23
 				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-05-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-05.pdf'">
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-05-thumb.png'); ?>">
 			</p>
 			<p>
 				<h2>
 					Newsletter Apr '23
 				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-04-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-04.pdf'">
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-04-thumb.png'); ?>">
 			</p>
 			<p>
 				<h2>
 					Newsletter Mar '23
 				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-03-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-03.pdf'">
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-03-thumb.png'); ?>">
 			</p>
 			<p>
 				<h2>
 					Newsletter Feb '23
 				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-02-thumb.png'); ?>" onClick="location.href='media/docs/CAC-Newsletter-2023-02.pdf'">
+				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-02-thumb.png'); ?>">
 			</p>
 		</div>
 	</div>
