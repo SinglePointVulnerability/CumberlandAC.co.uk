@@ -59,7 +59,7 @@ function auto_version($file='')
 		</div>
 		<div id="txt-id" class="txt">
 			<h1>
-				2024 Training Plan
+				2023 Training Plan
 			</h1>
 		</div>
 		<div class="txt">

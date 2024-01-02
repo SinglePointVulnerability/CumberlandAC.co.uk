@@ -64,7 +64,7 @@
 			  var data = google.visualization.arrayToDataTable([
 				["Charity", "Rank", { role: "style" } ]
 <?php
-	require '../secure/DBconn.php';
+	require '../DBconn.php';
 	
 	$sqlCharityByRank = "SELECT VerifiedVote AS charityID, " .
 							   "tblcharities.CharityTitle AS charityTitle, " . 

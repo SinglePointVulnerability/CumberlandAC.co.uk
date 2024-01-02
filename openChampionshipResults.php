@@ -21,7 +21,7 @@
         $RaceYear = 2022;//$_GET['champYear'];
     }
 	
-	$RaceYear = 2024;
+	$RaceYear = 2023;
 
     $ChampionshipName = "Open Championship";
 
