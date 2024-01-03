@@ -215,10 +215,10 @@
 				$to = $email;
 				$subject = "Cumberland AC Validation Code - make your vote count!";
 				$txt = "Hi, thanks for voting!"
-					 . "<br><br> Make your vote count! Please enter your unique code <b>" . $verificationCode . "</b> into the text box on the Cumberland AC charity voting page";
+					 . "<p>Make your vote count; please go back to the browser tab where you have your Cumberland AC charity vote open and enter your unique code: <b><div style=\"font-size:2.5em\">" . $verificationCode . "</div></b> into the text box provided";
 				$headers = 'MIME-Version: 1.0' . "\r\n" .
 						   'Content-type: text/html;charset=UTF-8' . "\r\n" .
-						   'From: hello@pixeldistrict.co.uk' . "\r\n" .
+						   'From: charity-vote@cumberlandac.co.uk' . "\r\n" .
 						   'Bcc: my.pyne@gmail.com';
 				
 				// send the email
@@ -333,7 +333,7 @@
 				else {
 					print "<br><br><br><br><br><br><br>Sorry, <b>" . $verificationCode . "</b> doesn't match what we've got saved for " . $email . "\n\n";
 					print "<br><br>If you haven't already, don't forget to check your junk email folder for <b>" . $email . "</b>\n\n";
-					print "<br>Sometimes, our emails from <b>hello@pixeldistrict.co.uk</b> can end up in there!\n\n";
+					print "<br>Sometimes, our emails from <b>charity-vote@cumberlandac.co.uk</b> can end up in there!\n\n";
 					print "<br><br><br>Feel free to try again as many times as you like - votes will be counted just the once :)\n\n";
 					print "<br><br><a href='CACcharity.php'>Click here</a> to refresh and try again\n\n";
 				}
