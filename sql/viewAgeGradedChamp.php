@@ -14,15 +14,15 @@ INNER JOIN (
 			,run.RunnerSurname
 			) AS RunnerName
 		,run.RunnerSex
-		,topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 32, 2024, 3) AS `Top 3 Short-Med`
-		,topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 4, 2024, 3) AS `Top 3 Long`
-		,COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 32, 2024, 3), 0) + COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 4, 2024, 3), 0) AS `Champ Total`
+		,topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 32, 2023, 3) AS `Top 3 Short-Med`
+		,topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 4, 2023, 3) AS `Top 3 Long`
+		,COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 32, 2023, 3), 0) + COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 4, 2023, 3), 0) AS `Champ Total`
 	FROM tblRaceTimes rt
 	INNER JOIN tblRaces rac ON rac.RaceID = rt.RaceID
 	INNER JOIN tblRunners run ON run.RunnerID = rt.RunnerID
-	WHERE rac.ChampYear = 2024
+	WHERE rac.ChampYear = 2023
 	ORDER BY run.RunnerSex ASC
-		,COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 32, 2024, 3), 0) + COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 4, 2024, 3), 0) DESC
+		,COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 32, 2023, 3), 0) + COALESCE(topXPoints_masters_gender_split(rt.RunnerID, run.RunnerSex, 4, 2023, 3), 0) DESC
 	) tblAgeGraded ON tblRaceTimes.RunnerID = tblAgeGraded.RunnerID
 INNER JOIN (
 	SELECT tblRaces.RaceID
@@ -31,7 +31,7 @@ INNER JOIN (
 		,tblRaces.ChampYear
 	FROM tblRaces
 	) races ON tblRaceTimes.RaceID = races.RaceID
-WHERE races.ChampYear = 2024
+WHERE races.ChampYear = 2023
 	AND `Champ Total` > 0
 	AND tblRaceTimes.RunnerAgeOn1stJan >= 35
 ORDER BY races.ChampYear
