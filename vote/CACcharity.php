@@ -92,25 +92,23 @@
 
 <table class="charityRanked">
 	<tr>
-		<th><h1>Cumberland AC - Charity of the Year, 2024 - ranked by votes (top three on display only)</h1></th>
+		<th><h1>Cumberland AC - Charity of the Year, 2023 - ranked by votes (top three on display only)</h1></th>
 	</tr>
 	<tr>
 		<td style="font-size:0.9em;">
 		<?php
-			//A: Records today's date and time
+			//A: RECORDS TODAY'S Date And Time
 			$today = time();
 
-			//B: Records date and time of the event
-			$event = mktime(17,0,0,12,25,2023); //this is actually 4pm, however IONOS servers are 1 hour ahead
-			$eventUserFriendly = date("l, jS \of F",$event);
-			
-			
-			//C: computes the hours until the event
+			//B: RECORDS Date And Time OF YOUR EVENT
+			$event = mktime(17,0,0,12,25,2022); //this is actually 4pm, however IONOS servers are 1 hour ahead
+
+			//C: COMPUTES THE HOURS UNTIL THE EVENT.
 			$countdown = ceil(($event-$today)/3600);
 			if ($countdown>24)
 			{
-				//D: displays countdown until the event
-				if (floor($countdown / 24) == 1)	
+				//D: DISPLAYS COUNTDOWN UNTIL EVENT
+				if (floor($countdown / 24) == 1)
 				{
 					$dayDays = "day";
 				}
@@ -128,25 +126,25 @@
 					$hourHours = "hours";
 				}
 				
-				echo "<i> " . floor($countdown / 24) . " $dayDays, " . ($countdown % 24) . " $hourHours until voting closes for <b>CAC Charity of the year, 2024 ($eventUserFriendly at 4pm)</b></i>";
+				echo "<i> " . floor($countdown / 24) . " $dayDays, " . ($countdown % 24) . " $hourHours until voting closes for <b>CAC Charity of the year, 2022 (Saturday 25th Dec at 4pm)</b></i>";
 			}
 			elseif ($countdown > 1)
 			{
 				$hourHours = "hours";
 				//D: DISPLAYS COUNTDOWN UNTIL EVENT
-				echo "<i>Less than $countdown $hourHours until voting closes for <b>CAC Charity of the year, 2024 ($eventUserFriendly at 4pm)</b></i>";
+				echo "<i>Less than $countdown $hourHours until voting closes for <b>CAC Charity of the year, 2021 (Saturday 25th Dec at 4pm)</b></i>";
 
 			}
 			elseif (($countdown <= 1) && ($countdown > 0))
 			{
 				$hourHours = "hour";
 				//D: DISPLAYS COUNTDOWN UNTIL EVENT
-				echo "<i>Less than $countdown $hourHours until voting closes for <b>CAC Charity of the year, 2024 ($eventUserFriendly at 4pm)</b></i>";
+				echo "<i>Less than $countdown $hourHours until voting closes for <b>CAC Charity of the year, 2021 (Saturday 25th Dec at 4pm)</b></i>";
 			}
 			else
 			{
 				//D: DISPLAYS COUNTDOWN UNTIL EVENT
-				echo "<i>Sorry! Voting closed for <b>CAC Charity of the year, 2024 ($eventUserFriendly at 4pm)</b></i>";
+				echo "<i>Sorry! Voting closed for <b>CAC Charity of the year, 2021 (Saturday 25th Dec at 4pm)</b></i>";
 			}
 		?>
 		</td>
@@ -443,9 +441,9 @@ function displayCharity($CharityID) {
 		    to supporting and caring for animals in need.  They offer a secure and caring environment for animals whose 
 			owners, for whatever reason, are unable to care for them any longer and help them find permanent, loving homes 
 			along with providing support and guidance for owners who wish to keep their animals.
-			<br><br>For more info please visit <a href="http://www.animalconcerncumbria.org">AnimalConcernCumbria.org</a></td>
+		<a href="http://www.animalconcerncumbria.org">AnimalConcernCumbria.org</a></td>
 		</tr>
-<!--		<tr class="charityBlurb" onClick='toggleRow(this)'>
+		<tr class="charityBlurb" onClick='toggleRow(this)'>
 		  <td><img src="img\TeaEvi50px.png" /></td>
 		  <td>Team Evie<br>(click for more)</td>
 		  <td class='expanded-row-content hide-row'><img src="img\TeaEvi150px.png" />Team Evie help sick children and 
@@ -490,7 +488,7 @@ function displayCharity($CharityID) {
 			independent charity which provides free, confidential, impartial, independent information and advice to
 			people who live and work in the borough of Copeland and their rights and responsibilities.
 			<br><br>For more info please visit: <a href="http://www.citizensadvicecopeland.org.uk">CitizensAdviceCopeland.org.uk</a></td>
-		</tr> -->
+		</tr>
 	  </table>
 
 	  <script>
