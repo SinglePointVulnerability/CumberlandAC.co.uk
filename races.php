@@ -96,13 +96,13 @@ function auto_version($file='')
 		</div>
 		<div id="txt-id" class="txt">
 			<h1>
-				Cumberland AC Championship, 2023
+				Cumberland AC Championship, 2024
 			</h1>
 		</div>
 		<div class="txt">
 			<p>
 				Below is the list of races in the club championships for the 
-				2023 season (some dates still to be confirmed)
+				2024 season (some dates still to be confirmed)
 			</p>
 			
 			<table>
