@@ -22,7 +22,7 @@
         $RaceYear = $_GET['champYear'];
     }
 
-	$RaceYear = 2023;
+	$RaceYear = 2024;
 
     $ChampionshipName = "Short Championship";
 

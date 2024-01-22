@@ -1,7 +1,7 @@
 <?php
 	session_start();
     include('secure/authenticate.php');
-	$RaceYear = "2023";
+	$RaceYear = "2024";
 ?>
 <html lang="en">
 <head>

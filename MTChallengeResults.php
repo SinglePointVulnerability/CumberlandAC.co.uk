@@ -24,7 +24,7 @@
         $RaceYear = date("Y");
     }
 
-	$RaceYear = 2023;
+	$RaceYear = 2024;
 
     $ChampionshipName = "Multi-Terrain Challenge";
 
