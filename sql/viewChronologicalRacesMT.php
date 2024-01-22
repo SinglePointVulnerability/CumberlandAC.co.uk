@@ -5,7 +5,7 @@ $sqlChronologicalRacesMT =
 	,r.RaceName
 	,r.RaceOrganiser
 FROM `tblRaces` AS r
-WHERE r.ChampYear = 2024
+WHERE r.ChampYear = 2023
 AND r.RaceCode = 16
 ORDER BY r.RaceDate ASC;";
 

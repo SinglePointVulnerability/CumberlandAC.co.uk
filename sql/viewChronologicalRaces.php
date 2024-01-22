@@ -19,7 +19,7 @@ $sqlChronologicalRaces =
 		END AS `Championship Category`
 	,(r.RaceDist / 1000) AS `Race Distance`
 FROM `tblRaces` AS r
-WHERE r.ChampYear = 2024
+WHERE r.ChampYear = 2023
 ORDER BY r.RaceDate ASC
 	,r.RaceDist ASC;";
 
