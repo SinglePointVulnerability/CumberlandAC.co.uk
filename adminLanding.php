@@ -42,13 +42,13 @@
 		<?php
 			if ($_SESSION["role"] == "site admin") {
 				echo "<a href=\"addRaceTime.php\">Add race times</a><br>";
-				echo "Update member details <-- coming soon, please ask site admin for help in the mean time<br>";
+				echo "<a href=\"updateMemberDetails.php\">Update member details</a><br>";
 			}
 			if ($_SESSION["role"] == "race admin") {
 				echo "<a href=\"addRaceTime.php\">Add race times</a><br>";
 			}
 			if ($_SESSION["role"] == "membership admin") {
-				echo "Update member details <-- coming soon, please ask site admin for help in the mean time<br>";
+				echo "<a href=\"updateMemberDetails.php\">Update member details</a><br>";
 			}
 		?>
 		</div>

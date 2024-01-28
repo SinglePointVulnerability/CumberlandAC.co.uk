@@ -76,6 +76,11 @@
 		font-family: "Calibri";
 	}
 
+
+	.txt-highlight-red {
+		background-color: #d55050;
+	}
+
 	h1 {
 		font-size: 25px;
 	}
@@ -84,6 +89,25 @@
 		font-size: 18px;
 		line-height: 2.2;
 	}
+
+	.main-page-content {
+		z-index: 1;
+	}
+
+/* Update Member Details */
+	.floating-content {
+		position: fixed;
+		top: 50px;
+		right: 100px;
+		z-index: 2;
+		background-color: rgba(255, 255, 255, 0.6);
+	}
+	.changes-list {
+		overflow-wrap: break-word;
+		resize: none;		
+	}
+/* Update Member Details */
+
 
 /* -- The animation code -- */
 /* - modified date added to image URLs to ensure cache refresh following changes - */
