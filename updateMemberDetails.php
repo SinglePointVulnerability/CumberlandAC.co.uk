@@ -22,64 +22,86 @@
 		<div class = "main-page-content">
 			<form id = "member-details">
 <?php
+function formPostSwitch($data) {
+	$MIDpattern = '/\d+/';
+	$MemberID = RegExScraper($data,$MIDpattern);
+	switch (substr($data,0,3)) {
+		case "div":
+			$MDivpattern = '/\(\d+\)/';	
+			$newDiv = RegExScraper($data,$MDivpattern);			
+			echo "User: " . $MemberID . " | Division change to " . $newDiv . "<br>";
+			break;
+		case "mem":
+			$MStatuspattern = '/\([A-Za-z]+\)/';
+			$newStatus = RegExScraper($data,$MStatuspattern);
+			echo "User: " . $MemberID . " | Membership status change to " . $newStatus . "<br>";
+			break;
+		case "dat":
+			$Dpattern = '/(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}/';
+			$newDate = RegExValidator($data,$Dpattern);
+			if (substr($newDate,0,1) == ":") {
+				echo "User: " . $MemberID . " | Date of birth change failed. Check format is dd/mm/yyyy. Date provided: " . trim($newDate,':');
+			} else {
+				echo "User: " . $MemberID . " | Date of birth change to " . $newDate . "<br>";
+			}
+			break;
+		case "fir":
+			$MNamepattern = '/\([\p{L}\'-]+\)/';
+			$newName = RegExValidator($data,$MNamepattern);
+			if (substr($newName,0,1) == ":") {
+				echo "User: " . $MemberID . " | First name change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . trim($newName,":()");
+			} else {
+				echo "User: " . $MemberID . " | First name change to " . trim($newName, '()') . "<br>";
+			}			
+			break;
+		case "sur":
+			$MNamepattern = '/\([\p{L}\'-]+\)/';
+			$newName = RegExValidator($data,$MNamepattern);
+			if (substr($newName,0,1) == ":") {
+				echo "User: " . $MemberID . " | Surname change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . trim($newName,":()");
+			} else {
+				echo "User: " . $MemberID . " | Surname change to " . trim($newName, '()') . "<br>";
+			}			
+			break;
+	}
+}
+function RegExScraper($input, $pattern) {
+	if (preg_match($pattern, $input, $matches)) {
+		$output = $matches[0];
+	}
+	return $output;
+}
+function RegExValidator($input, $pattern) {
+	if (preg_match($pattern, $input, $matches)) {
+		$output = $matches[0];
+	} else {
+		$pattern = '/\([\p{L}\d\'-\/]+\)/';
+		if (preg_match($pattern, $input, $failed_matches)) {
+			$output = $failed_matches[0];
+		}
+		$output = ":" . $failed_matches[0] . ":";
+	}
+	return $output;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data using $_POST
 	$newData = $_POST['changes-list-hidden'];
 	
 	$columns = explode(', ', $newData);
-	
-	foreach ($columns as $column) {
-		
-		$MIDpattern = '/\d+/';
-		if (preg_match($MIDpattern, $column, $matches)) {
-			$MID = $matches[0];
-		}
 
-		$MDivpattern = '/\(\d+\)/';
-		if (preg_match($MDivpattern, $column, $matches)) {
-			$MDiv = $matches[0];
-			$MDiv = trim($MDiv,'()');
-		}
 		
-		// dual purpose; covers first and last name
-		$MNamepattern = '/\([\p{L}\'-]+\)/';
-		if (preg_match($MNamepattern, $column, $matches)) {
-			$MName = $matches[0];
-			$MName = trim($MName,'()');
+		foreach ($columns as $column) {		
+			formPostSwitch($column);
+			
+			// dual purpose; covers first and last name
+			$MNamepattern = '/\([\p{L}\'-]+\)/';
+			if (preg_match($MNamepattern, $column, $matches)) {
+				$MName = $matches[0];
+				$MName = trim($MName,'()');
+			}		
 		}
-		
-		// date pattern
-		$Dpattern = '/(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}/';
-		if (preg_match($Dpattern, $column, $matches)) {
-			$MDoB = $matches[0];
-		}
-		
-		$MStatuspattern = '/\([A-Za-z]+\)/';
-		if (preg_match($MStatuspattern, $column, $matches)) {
-			$MStatus = $matches[0];
-			$MStatus = trim($MStatus,'()');
-		}		
-		
-		switch (substr($column,0,3)) {
-			case "div":
-				echo "User: " . $MID . " | Division change to " . $MDiv . "<br>";
-				break;
-			case "mem":
-				echo "User: " . $MID . " | Membership status change to " . $MStatus . "<br>";
-				break;
-			case "dat":
-				echo "User: " . $MID . " | Date of birth change to " . $MDoB . "<br>";
-				break;
-			case "fir":
-				echo "User: " . $MID . " | First name change to " . $MName . "<br>";
-				break;
-			case "sur":
-				echo "User: " . $MID . " | Surname change to " . $MName . "<br>";
-				break;
-		}
-
 	}
-}
 
 if($_SESSION["loggedin"]=='')
 {
@@ -224,6 +246,7 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 		echo "</table>";
 	}
 }
+
 ?>
 			</form>
 		</div>
@@ -241,7 +264,7 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 						<td span = "2"><span id="errorBox"></span></td>
 					</tr>
 					<tr>
-						<td span = "2" class = "txt">Fields changed:</td>
+						<td span = "2" class = "txt">Changes:</td>
 					</tr>
 					<tr>
 						<td span = "2"><textarea disabled rows = "10", cols = "20" class = "changes-list" id = "changes-list"></textarea></td>
