@@ -23,18 +23,24 @@
 			<form id = "member-details">
 <?php
 function formPostSwitch($data) {
+	
 	$MIDpattern = '/\d+/';
 	$MemberID = RegExScraper($data,$MIDpattern);
+	$sqlPart1 = 'UPDATE tblRunners SET [sql part 2] WHERE RunnerID = ' . $MemberID . ';';
+	$sqlPart2 = '';
+	
 	switch (substr($data,0,3)) {
 		case "div":
 			$MDivpattern = '/\(\d+\)/';	
 			$newDiv = RegExScraper($data,$MDivpattern);			
-			echo "User: " . $MemberID . " | Division change to " . $newDiv . "<br>";
+			//echo "User: " . $MemberID . " | Division change to " . $newDiv . "<br>";
+			$sqlPart2 = 'RunnerDiv = ' . trim($newDiv,'()');
 			break;
 		case "mem":
 			$MStatuspattern = '/\([A-Za-z]+\)/';
 			$newStatus = RegExScraper($data,$MStatuspattern);
-			echo "User: " . $MemberID . " | Membership status change to " . $newStatus . "<br>";
+			//echo "User: " . $MemberID . " | Membership status change to " . $newStatus . "<br>";
+			$sqlPart2 = 'RunnerFullSocialMember = "' . trim($newStatus,'()') . '"';
 			break;
 		case "dat":
 			$Dpattern = '/(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}/';
@@ -42,7 +48,9 @@ function formPostSwitch($data) {
 			if (substr($newDate,0,1) == ":") {
 				echo "User: " . $MemberID . " | Date of birth change failed. Check format is dd/mm/yyyy. Date provided: " . substr($newDate,2,-2) . "<br>";
 			} else {
-				echo "User: " . $MemberID . " | Date of birth change to " . $newDate . "<br>";
+				//echo "User: " . $MemberID . " | Date of birth change to " . $newDate . "<br>";
+				$ymd = DateTime::createFromFormat('d/m/Y', $newDate)->format('Y-m-d');
+				$sqlPart2 = 'RunnerDOB = "' . $ymd . '"';
 			}
 			break;
 		case "fir":
@@ -51,7 +59,8 @@ function formPostSwitch($data) {
 			if (substr($newName,0,1) == ":") {
 				echo "User: " . $MemberID . " | First name change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . substr($newName,2,-2) . "<br>";
 			} else {
-				echo "User: " . $MemberID . " | First name change to " . trim($newName, '()') . "<br>";
+				//echo "User: " . $MemberID . " | First name change to " . trim($newName, '()') . "<br>";
+				$sqlPart2 = 'RunnerFirstName = "' . trim($newName, '()') . '"';				
 			}			
 			break;
 		case "sur":
@@ -60,9 +69,15 @@ function formPostSwitch($data) {
 			if (substr($newName,0,1) == ":") {
 				echo "User: " . $MemberID . " | Surname change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . substr($newName,2,-2) . "<br>";
 			} else {
-				echo "User: " . $MemberID . " | Surname change to " . trim($newName, '()') . "<br>";
+				//echo "User: " . $MemberID . " | Surname change to " . trim($newName, '()') . "<br>";
+				$sqlPart2 = 'RunnerSurname = "' . trim($newName, '()') . '"';	
 			}			
 			break;
+	}
+	
+	if ($sqlPart2 <> '') {
+		$sqlFull = str_replace('[sql part 2]',$sqlPart2,$sqlPart1);
+		echo $sqlFull . '<br>';
 	}
 }
 function RegExScraper($input, $pattern) {
