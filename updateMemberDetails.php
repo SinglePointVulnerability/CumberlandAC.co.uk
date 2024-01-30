@@ -40,7 +40,7 @@ function formPostSwitch($data) {
 			$Dpattern = '/(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}/';
 			$newDate = RegExValidator($data,$Dpattern);
 			if (substr($newDate,0,1) == ":") {
-				echo "User: " . $MemberID . " | Date of birth change failed. Check format is dd/mm/yyyy. Date provided: " . trim($newDate,':');
+				echo "User: " . $MemberID . " | Date of birth change failed. Check format is dd/mm/yyyy. Date provided: " . substr($newDate,2,-2) . "<br>";
 			} else {
 				echo "User: " . $MemberID . " | Date of birth change to " . $newDate . "<br>";
 			}
@@ -49,7 +49,7 @@ function formPostSwitch($data) {
 			$MNamepattern = '/\([\p{L}\'-]+\)/';
 			$newName = RegExValidator($data,$MNamepattern);
 			if (substr($newName,0,1) == ":") {
-				echo "User: " . $MemberID . " | First name change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . trim($newName,":()");
+				echo "User: " . $MemberID . " | First name change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . substr($newName,2,-2) . "<br>";
 			} else {
 				echo "User: " . $MemberID . " | First name change to " . trim($newName, '()') . "<br>";
 			}			
@@ -58,7 +58,7 @@ function formPostSwitch($data) {
 			$MNamepattern = '/\([\p{L}\'-]+\)/';
 			$newName = RegExValidator($data,$MNamepattern);
 			if (substr($newName,0,1) == ":") {
-				echo "User: " . $MemberID . " | Surname change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . trim($newName,":()");
+				echo "User: " . $MemberID . " | Surname change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . substr($newName,2,-2) . "<br>";
 			} else {
 				echo "User: " . $MemberID . " | Surname change to " . trim($newName, '()') . "<br>";
 			}			
@@ -75,7 +75,7 @@ function RegExValidator($input, $pattern) {
 	if (preg_match($pattern, $input, $matches)) {
 		$output = $matches[0];
 	} else {
-		$pattern = '/\([\p{L}\d\'-\/]+\)/';
+		$pattern = '/\([^\s]+\)/';
 		if (preg_match($pattern, $input, $failed_matches)) {
 			$output = $failed_matches[0];
 		}
@@ -87,21 +87,12 @@ function RegExValidator($input, $pattern) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data using $_POST
 	$newData = $_POST['changes-list-hidden'];
-	
 	$columns = explode(', ', $newData);
-
 		
-		foreach ($columns as $column) {		
-			formPostSwitch($column);
-			
-			// dual purpose; covers first and last name
-			$MNamepattern = '/\([\p{L}\'-]+\)/';
-			if (preg_match($MNamepattern, $column, $matches)) {
-				$MName = $matches[0];
-				$MName = trim($MName,'()');
-			}		
-		}
+	foreach ($columns as $column) {		
+		formPostSwitch($column);
 	}
+}
 
 if($_SESSION["loggedin"]=='')
 {
