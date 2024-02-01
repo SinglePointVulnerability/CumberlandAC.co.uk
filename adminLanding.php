@@ -30,36 +30,50 @@
 		<div class="txt">
 			<p>
 				Hi, <b><?php echo $_SESSION["name"]; ?></b>, this is the admins 'hang out'!
-			</p>
-			<p>
-				Depending on what your role is, you should see a link below, which allows you to manage and maintain a part of the Cumberland AC membership
-			</p>
-			<p>
-				I think your role is: <?php echo $_SESSION["role"]; ?>
+				<br>
+				Depending on what your role is, you'll see a menu in the top-right of this page, which allows you to manage and maintain parts of the Cumberland AC membership
+				<br>
+				Your role is: <?php echo $_SESSION["role"]; ?>
 			</p>
 		</div>
-		<div class="txt">
+
+		<div class = "floating-content">
+			<form id = "admin-actions" method = "post" action = "adminLanding.php">
+				<table>
+					<tr>
+						<td class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
+					</tr>
+					<tr>
+						<td class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
+					</tr>
+					<tr>
+						<td class = "txt"><br><b>Actions</b></td>
+					</tr>
 		<?php
 			if ($_SESSION["role"] == "site admin") {
-				echo "<a href=\"addRaceTime.php\">Add race times</a><br>";
-				echo "<a href=\"updateMemberDetails.php\">Update member details</a><br>";
+				echo '<tr>' . PHP_EOL;
+				echo '<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
+				echo '</tr>' . PHP_EOL;
+				echo '<tr>' . PHP_EOL;
+				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Update member details</button></td>' . PHP_EOL;
+				echo '</tr>' . PHP_EOL;
 			}
 			if ($_SESSION["role"] == "race admin") {
-				echo "<a href=\"addRaceTime.php\">Add race times</a><br>";
+				echo '<tr>\r\n';
+				echo '<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>\r\n';
+				echo '</tr>\r\n';
 			}
 			if ($_SESSION["role"] == "membership admin") {
-				echo "<a href=\"updateMemberDetails.php\">Update member details</a><br>";
+				echo '<tr>\r\n';
+				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Update member details</button></td>\r\n';
+				echo '</tr>\r\n';
 			}
 		?>
-		</div>
-		<div class="txt">
-			<table>
-				<tr>
-					<td><a href="index.php">Back</a></td>
-					<td><a href="logout.php">Logout</a></td>
-				</tr>
-				<span id="errorBox"></span>
-			</table>
+					<tr>
+						<td><button type = "submit" formaction = "logout.php">Logout</button></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 

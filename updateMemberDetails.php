@@ -78,12 +78,14 @@ function formPostSwitch($data) {
 	}
 }
 function RegExScraper($input, $pattern) {
+	$output = '';
 	if (preg_match($pattern, $input, $matches)) {
 		$output = $matches[0];
 	}
 	return $output;
 }
 function RegExValidator($input, $pattern) {
+	$output = '';
 	if (preg_match($pattern, $input, $matches)) {
 		$output = $matches[0];
 	} else {
@@ -118,7 +120,7 @@ function exMultiQueries() {
 	}
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" and $_POST['changes-list-hidden'] <> '') {
     // Retrieve form data using $_POST
 	$newData = $_POST['changes-list-hidden'];
 	$columns = explode(', ', $newData);

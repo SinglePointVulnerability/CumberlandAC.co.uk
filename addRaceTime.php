@@ -440,14 +440,27 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
 <?php
         
 } // end of $login_session user check
-
 ?>
-        <table>
-			<tr>
-				<td><a href="adminLanding.php">Back</a></td>
-				<td><a href="logout.php">Logout</a></td>
-			</tr>
-            <span id="errorBox"></span>
-		</table>
+		<div class = "floating-content">
+			<form id = "admin-actions" method = "post" action = "addRaceTime.php">
+				<table>
+					<tr>
+						<td class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
+					</tr>
+					<tr>
+						<td class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
+					</tr>
+					<tr>
+						<td class = "txt"><br><b>Actions</b></td>
+					</tr>
+					<tr>
+						<td><button type = "submit" formaction = "adminLanding.php">Admin home</button></td>
+					</tr>
+					<tr>
+						<td><button type = "submit" formaction = "logout.php">Logout</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
     </body>
 </html>
