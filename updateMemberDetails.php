@@ -22,24 +22,24 @@
 		<div class = "main-page-content">
 			<form id = "member-details">
 <?php
-function formPostSwitch($data) {
+$sqlMulti = '';
 	
+function formPostSwitch($data) {
 	$MIDpattern = '/\d+/';
 	$MemberID = RegExScraper($data,$MIDpattern);
-	$sqlPart1 = 'UPDATE tblRunners SET [sql part 2] WHERE RunnerID = ' . $MemberID . ';';
+	$sqlPart1 = 'UPDATE tblRunners SET [sql part 2], RecordUpdatedBy = "' . $_SESSION["name"] . '" WHERE RunnerID = ' . $MemberID . ';';
 	$sqlPart2 = '';
+	global $sqlMulti;
 	
 	switch (substr($data,0,3)) {
 		case "div":
 			$MDivpattern = '/\(\d+\)/';	
 			$newDiv = RegExScraper($data,$MDivpattern);			
-			//echo "User: " . $MemberID . " | Division change to " . $newDiv . "<br>";
 			$sqlPart2 = 'RunnerDiv = ' . trim($newDiv,'()');
 			break;
 		case "mem":
 			$MStatuspattern = '/\([A-Za-z]+\)/';
 			$newStatus = RegExScraper($data,$MStatuspattern);
-			//echo "User: " . $MemberID . " | Membership status change to " . $newStatus . "<br>";
 			$sqlPart2 = 'RunnerFullSocialMember = "' . trim($newStatus,'()') . '"';
 			break;
 		case "dat":
@@ -48,7 +48,6 @@ function formPostSwitch($data) {
 			if (substr($newDate,0,1) == ":") {
 				echo "User: " . $MemberID . " | Date of birth change failed. Check format is dd/mm/yyyy. Date provided: " . substr($newDate,2,-2) . "<br>";
 			} else {
-				//echo "User: " . $MemberID . " | Date of birth change to " . $newDate . "<br>";
 				$ymd = DateTime::createFromFormat('d/m/Y', $newDate)->format('Y-m-d');
 				$sqlPart2 = 'RunnerDOB = "' . $ymd . '"';
 			}
@@ -59,7 +58,6 @@ function formPostSwitch($data) {
 			if (substr($newName,0,1) == ":") {
 				echo "User: " . $MemberID . " | First name change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . substr($newName,2,-2) . "<br>";
 			} else {
-				//echo "User: " . $MemberID . " | First name change to " . trim($newName, '()') . "<br>";
 				$sqlPart2 = 'RunnerFirstName = "' . trim($newName, '()') . '"';				
 			}			
 			break;
@@ -69,15 +67,14 @@ function formPostSwitch($data) {
 			if (substr($newName,0,1) == ":") {
 				echo "User: " . $MemberID . " | Surname change failed. Check format only contains alphabet characters and the symbols ' or - | Name provided: " . substr($newName,2,-2) . "<br>";
 			} else {
-				//echo "User: " . $MemberID . " | Surname change to " . trim($newName, '()') . "<br>";
 				$sqlPart2 = 'RunnerSurname = "' . trim($newName, '()') . '"';	
 			}			
 			break;
 	}
 	
 	if ($sqlPart2 <> '') {
-		$sqlFull = str_replace('[sql part 2]',$sqlPart2,$sqlPart1);
-		echo $sqlFull . '<br>';
+		$sqlLine = str_replace('[sql part 2]',$sqlPart2,$sqlPart1);
+		$sqlMulti .= $sqlLine;
 	}
 }
 function RegExScraper($input, $pattern) {
@@ -99,14 +96,41 @@ function RegExValidator($input, $pattern) {
 	return $output;
 }
 
+function exMultiQueries() {
+	global $sqlMulti;
+	global $conn;
+
+	// Execute multiple queries
+	if ($conn->multi_query($sqlMulti)) {
+		do {
+			// Store and process the result set for the current query
+			if ($result = $conn->store_result()) {
+				while ($row = $result->fetch_row()) {
+					// Process the result data
+					print_r($row);
+				}
+				$result->free();
+			}
+			// Move to the next query in the multiple-query execution
+		} while ($conn->next_result());
+	} else {
+		echo "Error executing multiple queries: " . $conn->error;
+	}
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data using $_POST
 	$newData = $_POST['changes-list-hidden'];
 	$columns = explode(', ', $newData);
-		
+	
 	foreach ($columns as $column) {		
 		formPostSwitch($column);
 	}
+	
+	exMultiQueries();
+	
+	// sql executes, the page doesn't load any further; on refresh the SQL changes appear to have applied, but on going back to the admin menu,
+	//    then revisiting the updateMemberDetails page, the SQL changes are undone
 }
 
 if($_SESSION["loggedin"]=='')
