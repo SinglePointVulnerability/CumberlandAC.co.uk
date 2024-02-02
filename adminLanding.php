@@ -55,18 +55,21 @@
 				echo '<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 				echo '<tr>' . PHP_EOL;
-				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Update member details</button></td>' . PHP_EOL;
+				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 			}
 			if ($_SESSION["role"] == "race admin") {
-				echo '<tr>\r\n';
-				echo '<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>\r\n';
-				echo '</tr>\r\n';
+				echo '<tr>' . PHP_EOL;
+				echo '<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
+				echo '</tr>' . PHP_EOL;
+				echo '<tr>' . PHP_EOL;
+				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
+				echo '</tr>' . PHP_EOL;
 			}
 			if ($_SESSION["role"] == "membership admin") {
-				echo '<tr>\r\n';
-				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Update member details</button></td>\r\n';
-				echo '</tr>\r\n';
+				echo '<tr>' . PHP_EOL;
+				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
+				echo '</tr>' . PHP_EOL;
 			}
 		?>
 					<tr>

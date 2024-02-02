@@ -7,7 +7,7 @@
 <head>
   <title>Cumberland AC Race Time Admin, <?php echo $RaceYear; ?></title>
   <meta name="description" content="Cumberland AC Race Time Admin - Add Race Time">
-  <meta name="author" content="West Coast Web Design">
+  <meta name="author" content="Pixel District">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/styles.css<?php echo "?date=" . date("Y-m-d_H-i"); ?>">
@@ -47,7 +47,7 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
     $intMTChallCount=0;
     
     //load all runners who have paid their subscriptions
-    $sqlRunners = "SELECT RunnerID, RunnerFirstName, RunnerSurname, RunnerDiv FROM tblRunners WHERE RunnerSubsPaid = 'Y' ORDER BY RunnerDiv ASC, RunnerSurname ASC";
+    $sqlRunners = "SELECT RunnerID, RunnerFirstName, RunnerSurname, RunnerDiv FROM tblRunners WHERE RunnerDiv > 0 AND RunnerDOB <> '0000-00-00' AND RunnerFullSocialMember = 'Full' ORDER BY RunnerDiv ASC, RunnerSurname ASC";
     $intRunnerDiv1Count=0;
     $intRunnerDiv2Count=0;
     $intRunnerDiv3Count=0;
@@ -310,11 +310,10 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
     }
 
     function validateForm(totalDDLRows) {
-        
         var i = 0;
         var varErr = 0;
 
-        document.getElementById("errorBox").innerHTML = "";
+        document.getElementById("errorBox").value = "";
         document.getElementById("champSelect").style.border = "none";
         document.getElementById("raceSelect1").style.border = "none";
         document.getElementById("raceSelect2").style.border = "none";
@@ -365,7 +364,7 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
                 }
             }
         if(varErr>0) {
-            document.getElementById("errorBox").innerHTML = "<br>Errors found! Please fix the highlighted box(es) before you submit the changes<br>";
+            document.getElementById("errorBox").value = "Errors found! Please fix the highlighted box(es) before you submit the changes";
             varErr = 0;
         }
         else {
@@ -374,6 +373,9 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
         }
     }
 </script>
+		<div class = "txt">
+			<b>Hint:</b> If you can't see the runner you're looking for, check the member details page
+		</div>
         <br><br>Select the race you're entering times for:<br>
         <form action="" method="post" name="formRaceTimes" id="formRaceTimes">
             <select id="champSelect" name="champSelect" onchange="configureDDL2(this, document.getElementById('raceSelect1'), document.getElementById('raceSelect2'))">
@@ -432,7 +434,6 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
             } while ($ddl_runner_count<11);
 
         ?>
-        <input type="button" onclick="validateForm(<?php echo ($ddl_runner_count - 1); ?>)" value="Submit" />
         <input type="hidden" name="fieldCount" id="fieldCount" value="<?php echo ($ddl_runner_count-1); ?>">
         <input type="hidden" name="parentPage" id="parentPage" value="addRaceTime">
         </form>
@@ -442,22 +443,29 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
 } // end of $login_session user check
 ?>
 		<div class = "floating-content">
-			<form id = "admin-actions" method = "post" action = "addRaceTime.php">
+			<form id = "admin-actions" method = "post" action = "updateMemberDetails.php">			
 				<table>
 					<tr>
-						<td class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
+						<td span = "2" class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
 					</tr>
 					<tr>
-						<td class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
+						<td span = "2" class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
 					</tr>
 					<tr>
-						<td class = "txt"><br><b>Actions</b></td>
+						<td span = "2" class = "txt"><br><b>Actions</b></td>
 					</tr>
 					<tr>
 						<td><button type = "submit" formaction = "adminLanding.php">Admin home</button></td>
+						<td><button type = "submit" formaction = "logout.php">Logout</button></td>
 					</tr>
 					<tr>
-						<td><button type = "submit" formaction = "logout.php">Logout</button></td>
+						<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>
+					</tr>
+					<tr>
+						<td span = "2"><input type="button" onclick="validateForm(<?php echo ($ddl_runner_count - 1); ?>)" value="Submit" /></td>
+					</tr>
+					<tr>
+						<td span = "2"><textarea id = "errorBox" name = "errorBox" rows="10", cols="20"></textarea></td>
 					</tr>
 				</table>
 			</form>

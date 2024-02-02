@@ -192,13 +192,30 @@ fwrite($myLog,$tLogWrite);
 fclose($myLog);
 ?>
 <body>
-<br><br>
-    Tables updated...
-<br><br>
-<table>
-    <tr>
-        <td><a href="addRaceTime.php">Back</a></td>
-    </tr>
-</table>
+	<div class = "floating-content">
+		<form id = "admin-actions" method = "post" action = "addRaceTime.php">			
+			<table>
+				<tr>
+					<td class = "txt" span = "2"><b><?php echo $_SESSION["name"]; ?></b></td>
+				</tr>
+				<tr>
+					<td class = "txt" span = "2">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
+				</tr>
+				<tr>
+					<td class = "txt" span = "2"><br><b>Actions</b></td>
+				</tr>
+				<tr>
+					<td><button type = "submit" formaction = "adminLanding.php">Admin home</button></td>
+					<td><button type = "submit" formaction = "logout.php">Logout</button></td>
+				</tr>
+				<tr>
+					<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>
+				</tr>
+				<tr>
+					<td span = "2"><textarea id = "errorBox" name = "errorBox" rows="10", cols="20">Tables updated...</textarea></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

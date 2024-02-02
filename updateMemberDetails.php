@@ -74,6 +74,7 @@ function formPostSwitch($data) {
 	
 	if ($sqlPart2 <> '') {
 		$sqlLine = str_replace('[sql part 2]',$sqlPart2,$sqlPart1);
+		echo $sqlLine;
 		$sqlMulti .= $sqlLine;
 	}
 }
@@ -146,10 +147,10 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 	echo 'Hi <b>' . $_SESSION["name"] . '</b>,';
 	echo '<br>';
 	echo '<br>';
-	echo 'As a quick guide, members in the table below, who have cells highlighted in red, cannot be selected when adding race times';
+	echo 'As a quick guide, members in the table below who have fields highlighted in red cannot be selected when adding race times';
 	echo '<br>';
 	echo '<br>';
-	echo 'Depending on your user permissions, you might be able to correct the red cells yourself. If not, please let the site admin know (my.pyne@gmail.com)';
+	echo 'Depending on your user permissions, you might be able to correct some red fields yourself. If not, please let the site admin know (my.pyne@gmail.com)';
 	echo '<br>';
 	echo '<br>';
 	echo '</div>';
@@ -286,7 +287,13 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 			<form id = "admin-actions" method = "post" action = "updateMemberDetails.php">
 				<table>
 					<tr>
-						<td span = "2" class = "txt"><b>Actions</b></td>
+						<td span = "2" class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
+					</tr>
+					<tr>
+						<td span = "2" class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
+					</tr>
+					<tr>
+						<td span = "2" class = "txt"><br><b>Actions</b></td>
 					</tr>
 					<tr>
 						<td><button type = "submit" formaction = "adminLanding.php">Admin home</button></td>
