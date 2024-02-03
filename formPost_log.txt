@@ -159,3 +159,125 @@
 2024-02-02_21-10 UTC (GMT +0000): SQL: SELECT calc_masters_time(1, 40, 235, '01:16:01') AS masters_time
 2024-02-02_21-10 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '01:13:32' WHERE RaceID='235' AND RunnerID='1'
 - - - End of log entries for: 2024-02-02_21-10
+
+- - - Start of log entries for: 2024-02-03_21-58 UTC (GMT +0000): 
+2024-02-03_21-58 UTC (GMT +0000): Parent page: addRaceTime
+2024-02-03_21-58 UTC (GMT +0000): Field Count: 10. Championship: open
+2024-02-03_21-58 UTC (GMT +0000): Race ID: 221
+2024-02-03_21-58 UTC (GMT +0000): Added to array: Runner Division: 1. Name and ID: 1_Stuart Pyne Race Time: 00:45:00
+2024-02-03_21-58 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='1'. Rows returned: 0
+2024-02-03_21-58 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('221', '1', '00:45:00', '39', '39')
+2024-02-03_21-58 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_21-58 UTC (GMT +0000): SQL: SELECT calc_masters_time(1, 39, 221, '00:45:00') AS masters_time
+2024-02-03_21-58 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:43:40' WHERE RaceID='221' AND RunnerID='1'
+- - - End of log entries for: 2024-02-03_21-58
+
+- - - Start of log entries for: 2024-02-03_22-06 UTC (GMT +0000): 
+2024-02-03_22-06 UTC (GMT +0000): Parent page: addRaceTime
+2024-02-03_22-06 UTC (GMT +0000): Field Count: 10. Championship: open
+2024-02-03_22-06 UTC (GMT +0000): Race ID: 221
+2024-02-03_22-06 UTC (GMT +0000): Added to array: Runner Division: 3. Name and ID: 423_Linda Beck Race Time: 00:45:00
+2024-02-03_22-06 UTC (GMT +0000): Added to array: Runner Division: 2. Name and ID: 81_Alison Andrew Race Time: 00:45:00
+2024-02-03_22-06 UTC (GMT +0000): Added to array: Runner Division: 1. Name and ID: 425_Zak Anderson Race Time: 00:45:00
+2024-02-03_22-06 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='423'. Rows returned: 0
+2024-02-03_22-06 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('221', '423', '00:45:00', '57', '57')
+2024-02-03_22-06 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-06 UTC (GMT +0000): SQL: SELECT calc_masters_time(423, 57, 221, '00:45:00') AS masters_time
+2024-02-03_22-06 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:36:34' WHERE RaceID='221' AND RunnerID='423'
+2024-02-03_22-06 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='81'. Rows returned: 0
+2024-02-03_22-06 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('221', '81', '00:45:00', '58', '58')
+2024-02-03_22-06 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-06 UTC (GMT +0000): SQL: SELECT calc_masters_time(81, 58, 221, '00:45:00') AS masters_time
+2024-02-03_22-06 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:36:07' WHERE RaceID='221' AND RunnerID='81'
+2024-02-03_22-06 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='425'. Rows returned: 0
+2024-02-03_22-06 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('221', '425', '00:45:00', '23', '23')
+2024-02-03_22-06 UTC (GMT +0000): Runner not >=35 on race day.
+- - - End of log entries for: 2024-02-03_22-06
+
+- - - Start of log entries for: 2024-02-03_22-09 UTC (GMT +0000): 
+2024-02-03_22-09 UTC (GMT +0000): Parent page: addRaceTime
+2024-02-03_22-09 UTC (GMT +0000): Field Count: 10. Championship: open
+2024-02-03_22-09 UTC (GMT +0000): Race ID: 221
+2024-02-03_22-09 UTC (GMT +0000): Added to array: Runner Division: 4. Name and ID: 201_Heather Allenby Race Time: 00:45:00
+2024-02-03_22-09 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='201'. Rows returned: 0
+2024-02-03_22-09 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('221', '201', '00:45:00', '32', '32')
+2024-02-03_22-09 UTC (GMT +0000): Runner not >=35 on race day.
+- - - End of log entries for: 2024-02-03_22-09
+
+- - - Start of log entries for: 2024-02-03_22-10 UTC (GMT +0000): 
+2024-02-03_22-10 UTC (GMT +0000): Parent page: addRaceTime
+2024-02-03_22-10 UTC (GMT +0000): Field Count: 10. Championship: open
+2024-02-03_22-10 UTC (GMT +0000): Race ID: 221
+2024-02-03_22-10 UTC (GMT +0000): Added to array: Runner Division: 5. Name and ID: 200_Sarah Alcorn Race Time: 00:45:00
+2024-02-03_22-10 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='200'. Rows returned: 0
+2024-02-03_22-10 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('221', '200', '00:45:00', '34', '34')
+2024-02-03_22-10 UTC (GMT +0000): Runner not >=35 on race day.
+- - - End of log entries for: 2024-02-03_22-10
+
+- - - Start of log entries for: 2024-02-03_22-12 UTC (GMT +0000): 
+2024-02-03_22-12 UTC (GMT +0000): Parent page: addRaceTime
+2024-02-03_22-12 UTC (GMT +0000): Field Count: 10. Championship: open
+2024-02-03_22-12 UTC (GMT +0000): Race ID: 221
+2024-02-03_22-12 UTC (GMT +0000): Added to array: Runner Division: 6. Name and ID: 1_Stuart Pyne Race Time: 00:46:00
+2024-02-03_22-12 UTC (GMT +0000): Added to array: Runner Division: 4. Name and ID: 201_Heather Allenby Race Time: 00:44:00
+2024-02-03_22-12 UTC (GMT +0000): Added to array: Runner Division: 3. Name and ID: 211_Dawn Allison Race Time: 00:43:00
+2024-02-03_22-12 UTC (GMT +0000): Added to array: Runner Division: 2. Name and ID: 81_Alison Andrew Race Time: 00:42:00
+2024-02-03_22-12 UTC (GMT +0000): Added to array: Runner Division: 1. Name and ID: 425_Zak Anderson Race Time: 00:41:00
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='1'. Rows returned: 1
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET RaceTime='00:46:00', RunnerAgeOnRaceDay=39, RunnerAgeOn1stJan = 39 WHERE RaceID='221' AND RunnerID='1'
+2024-02-03_22-12 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT calc_masters_time(1, 39, 221, '00:46:00') AS masters_time
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:44:39' WHERE RaceID='221' AND RunnerID='1'
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='201'. Rows returned: 1
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET RaceTime='00:44:00', RunnerAgeOnRaceDay=32, RunnerAgeOn1stJan = 32 WHERE RaceID='221' AND RunnerID='201'
+2024-02-03_22-12 UTC (GMT +0000): Runner not >=35 on race day.
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='211'. Rows returned: 0
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('221', '211', '00:43:00', '39', '39')
+2024-02-03_22-12 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT calc_masters_time(211, 39, 221, '00:43:00') AS masters_time
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:41:37' WHERE RaceID='221' AND RunnerID='211'
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='81'. Rows returned: 1
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET RaceTime='00:42:00', RunnerAgeOnRaceDay=58, RunnerAgeOn1stJan = 58 WHERE RaceID='221' AND RunnerID='81'
+2024-02-03_22-12 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT calc_masters_time(81, 58, 221, '00:42:00') AS masters_time
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:33:43' WHERE RaceID='221' AND RunnerID='81'
+2024-02-03_22-12 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='221' AND RunnerID='425'. Rows returned: 1
+2024-02-03_22-12 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET RaceTime='00:41:00', RunnerAgeOnRaceDay=23, RunnerAgeOn1stJan = 23 WHERE RaceID='221' AND RunnerID='425'
+2024-02-03_22-12 UTC (GMT +0000): Runner not >=35 on race day.
+- - - End of log entries for: 2024-02-03_22-12
+
+- - - Start of log entries for: 2024-02-03_22-32 UTC (GMT +0000): 
+2024-02-03_22-32 UTC (GMT +0000): Parent page: addRaceTime
+2024-02-03_22-32 UTC (GMT +0000): Field Count: 10. Championship: open
+2024-02-03_22-32 UTC (GMT +0000): Race ID: 223
+2024-02-03_22-32 UTC (GMT +0000): Added to array: Runner Division: 1. Name and ID: 81_Alison Andrew Race Time: 01:11:00
+2024-02-03_22-32 UTC (GMT +0000): Added to array: Runner Division: 2. Name and ID: 425_Zak Anderson Race Time: 01:12:00
+2024-02-03_22-32 UTC (GMT +0000): Added to array: Runner Division: 3. Name and ID: 211_Dawn Allison Race Time: 01:13:00
+2024-02-03_22-32 UTC (GMT +0000): Added to array: Runner Division: 4. Name and ID: 201_Heather Allenby Race Time: 01:14:00
+2024-02-03_22-32 UTC (GMT +0000): Added to array: Runner Division: 5. Name and ID: 200_Sarah Alcorn Race Time: 01:15:00
+2024-02-03_22-32 UTC (GMT +0000): Added to array: Runner Division: 6. Name and ID: 1_Stuart Pyne Race Time: 01:16:00
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='223' AND RunnerID='81'. Rows returned: 0
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('223', '81', '01:11:00', '58', '58')
+2024-02-03_22-32 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT calc_masters_time(81, 58, 223, '01:11:00') AS masters_time
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '00:56:53' WHERE RaceID='223' AND RunnerID='81'
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='223' AND RunnerID='425'. Rows returned: 0
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('223', '425', '01:12:00', '23', '23')
+2024-02-03_22-32 UTC (GMT +0000): Runner not >=35 on race day.
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='223' AND RunnerID='211'. Rows returned: 0
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('223', '211', '01:13:00', '39', '39')
+2024-02-03_22-32 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT calc_masters_time(211, 39, 223, '01:13:00') AS masters_time
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '01:10:55' WHERE RaceID='223' AND RunnerID='211'
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='223' AND RunnerID='201'. Rows returned: 0
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('223', '201', '01:14:00', '32', '32')
+2024-02-03_22-32 UTC (GMT +0000): Runner not >=35 on race day.
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='223' AND RunnerID='200'. Rows returned: 0
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('223', '200', '01:15:00', '34', '34')
+2024-02-03_22-32 UTC (GMT +0000): Runner not >=35 on race day.
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT * FROM tblRaceTimes WHERE RaceID='223' AND RunnerID='1'. Rows returned: 0
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: INSERT INTO tblRaceTimes (RaceID,RunnerID, RaceTime, RunnerAgeOnRaceDay, RunnerAgeOn1stJan) VALUES ('223', '1', '01:16:00', '39', '39')
+2024-02-03_22-32 UTC (GMT +0000): Runner >=35 on race day.
+2024-02-03_22-32 UTC (GMT +0000): SQL: SELECT calc_masters_time(1, 39, 223, '01:16:00') AS masters_time
+2024-02-03_22-32 UTC (GMT +0000): SQL SUCCESS: UPDATE tblRaceTimes SET MastersRaceTime = '01:14:02' WHERE RaceID='223' AND RunnerID='1'
+- - - End of log entries for: 2024-02-03_22-32

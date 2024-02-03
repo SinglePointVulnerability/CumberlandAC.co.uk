@@ -178,11 +178,9 @@
 						array(
 							  "ChampYear" => $row["ChampYear"],
 							  "RunnerDiv" => $row["RunnerDiv"],
-							  "RunnerSex" => $row["RunnerSex"],
 							  "ChampTotal" => $row["ChampTotal"],
 							  "RunnerID" => $row["RunnerID"],
-							  "RunnerName" => $row["RunnerName"],
-							  "RunnerSex" => $row["RunnerSex"]
+							  "RunnerName" => $row["RunnerName"]
 							 )
 					);
 				}
@@ -322,7 +320,6 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 
 	
 	$currentRunnerDiv = 0;
-	$currentRunnerSex = "";
 	
 	// code to display races and runners
     foreach($arrRankedRaceTimes as $arrRT)
@@ -331,12 +328,11 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 		echo "<tr>";
 		
 		
-		if($arrRT["RunnerDiv"] <> $currentRunnerDiv or $arrRT["RunnerSex"] <> $currentRunnerSex)
+		if($arrRT["RunnerDiv"] <> $currentRunnerDiv)
 		{
-			//mark the start of the division and sex
+			//mark the start of the division
 			$currentRunnerDiv = $arrRT["RunnerDiv"];
-			$currentRunnerSex = $arrRT["RunnerSex"];
-			echo "<td>Div $currentRunnerDiv : $currentRunnerSex</td></tr>\n<tr>";
+			echo "<td>Div $currentRunnerDiv</td></tr>\n<tr>";
 		}
 
 
@@ -354,7 +350,7 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 
 		
 			// Get the race times
-			if(mysqli_multi_query($conn,"SELECT RunnerID, RaceID, RaceTime, (101 - rank_division_gender_split(RunnerID, RaceID, RaceTime)) AS RacePoints FROM `tblRaceTimes` WHERE RunnerID = " . $arrRT["RunnerID"] . " AND RaceID = " . $arrRace["RaceID"]))
+			if(mysqli_multi_query($conn,"SELECT RunnerID, RaceID, RaceTime, (101 - rank_division_split(RunnerID, RaceID, RaceTime)) AS RacePoints FROM `tblRaceTimes` WHERE RunnerID = " . $arrRT["RunnerID"] . " AND RaceID = " . $arrRace["RaceID"]))
 			{
 				do{
 					if($result=mysqli_store_result($conn)){
