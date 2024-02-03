@@ -33,7 +33,7 @@
 				<br>
 				Depending on what your role is, you'll see a menu in the top-right of this page, which allows you to manage and maintain parts of the Cumberland AC membership
 				<br>
-				Your role is: <?php echo $_SESSION["role"]; ?>
+				Your role is: <b><?php echo $_SESSION["role"]; ?></b>
 			</p>
 		</div>
 
@@ -41,40 +41,42 @@
 			<form id = "admin-actions" method = "post" action = "adminLanding.php">
 				<table>
 					<tr>
-						<td class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
+						<td span = "2" class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
 					</tr>
 					<tr>
-						<td class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
+						<td span = "2" class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
 					</tr>
 					<tr>
-						<td class = "txt"><br><b>Actions</b></td>
+						<td span = "2" class = "txt"><br><b>Actions</b></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><button type = "submit" formaction = "logout.php">Logout</button></td>
 					</tr>
 		<?php
 			if ($_SESSION["role"] == "site admin") {
 				echo '<tr>' . PHP_EOL;
-				echo '<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
+				echo '<td span = "2"><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 				echo '<tr>' . PHP_EOL;
-				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
+				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 			}
 			if ($_SESSION["role"] == "race admin") {
 				echo '<tr>' . PHP_EOL;
-				echo '<td><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
+				echo '<td span = "2"><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 				echo '<tr>' . PHP_EOL;
-				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
+				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 			}
 			if ($_SESSION["role"] == "membership admin") {
 				echo '<tr>' . PHP_EOL;
-				echo '<td><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
+				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 			}
 		?>
-					<tr>
-						<td><button type = "submit" formaction = "logout.php">Logout</button></td>
-					</tr>
+
 				</table>
 			</form>
 		</div>

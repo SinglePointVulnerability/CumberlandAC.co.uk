@@ -51,6 +51,9 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
     $intRunnerDiv1Count=0;
     $intRunnerDiv2Count=0;
     $intRunnerDiv3Count=0;
+    $intRunnerDiv4Count=0;
+    $intRunnerDiv5Count=0;
+    $intRunnerDiv6Count=0;	
 
 ?>
     <body>
@@ -245,6 +248,42 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
                 }
                 $intRunnerDiv3Count++;
             }
+            if($row["RunnerDiv"]=='4') {
+                if($intRunnerDiv4Count==0){
+                    // finish the previous line of JavaScript and output the first new line of JavaScript 
+                    echo "}, " .
+                         "\n'4': {'" . $row["RunnerID"] . "_" . $row["RunnerFirstName"] . " " . $row["RunnerSurname"] . "': []";
+                }
+                else{
+                    // output the next line(s) of JavaScript
+                    echo ", '" . $row["RunnerID"] . "_" . $row["RunnerFirstName"] . " " . $row["RunnerSurname"] . "': []";
+                }
+                $intRunnerDiv4Count++;
+            }
+            if($row["RunnerDiv"]=='5') {
+                if($intRunnerDiv5Count==0){
+                    // finish the previous line of JavaScript and output the first new line of JavaScript 
+                    echo "}, " .
+                         "\n'5': {'" . $row["RunnerID"] . "_" . $row["RunnerFirstName"] . " " . $row["RunnerSurname"] . "': []";
+                }
+                else{
+                    // output the next line(s) of JavaScript
+                    echo ", '" . $row["RunnerID"] . "_" . $row["RunnerFirstName"] . " " . $row["RunnerSurname"] . "': []";
+                }
+                $intRunnerDiv3Count++;
+            }
+            if($row["RunnerDiv"]=='6') {
+                if($intRunnerDiv6Count==0){
+                    // finish the previous line of JavaScript and output the first new line of JavaScript 
+                    echo "}, " .
+                         "\n'6': {'" . $row["RunnerID"] . "_" . $row["RunnerFirstName"] . " " . $row["RunnerSurname"] . "': []";
+                }
+                else{
+                    // output the next line(s) of JavaScript
+                    echo ", '" . $row["RunnerID"] . "_" . $row["RunnerFirstName"] . " " . $row["RunnerSurname"] . "': []";
+                }
+                $intRunnerDiv6Count++;
+            }
         }
     //output the last line of JavaScript - keep within 'if' statement to avoid php parse errors should the query return no results
     echo "} \n";     
@@ -397,6 +436,9 @@ else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION[
                         "                <option value=\"1\">Division 1</option>\n" . 
                         "                <option value=\"2\">Division 2</option>\n" .
                         "                <option value=\"3\">Division 3</option>\n" .
+                        "                <option value=\"4\">Division 4</option>\n" . 
+                        "                <option value=\"5\">Division 5</option>\n" .
+                        "                <option value=\"6\">Division 6</option>\n" .
                         "             </select>\n" .
                         "             <select id=\"ddl2_runner_$ddl_runner_count\" name=\"ddl2_runner_$ddl_runner_count\">\n" .
                         "             </select>\n";
