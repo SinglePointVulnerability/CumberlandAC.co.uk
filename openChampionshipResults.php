@@ -28,12 +28,16 @@
     // if it exists, empty the array of raceIDs
     unset($arrRaces);
 
+    // if it exists, empty the array of Div 6 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
+    unset($arrDiv6RunnerIDsNamesChampIDs);
+    // if it exists, empty the array of Div 5 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
+    unset($arrDiv5RunnerIDsNamesChampIDs);
+    // if it exists, empty the array of Div 4 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
+    unset($arrDiv4RunnerIDsNamesChampIDs);
     // if it exists, empty the array of Div 3 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
     unset($arrDiv3RunnerIDsNamesChampIDs);
-
     // if it exists, empty the array of Div 2 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
     unset($arrDiv2RunnerIDsNamesChampIDs);
-
     // if it exists, empty the array of Div 1 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
     unset($arrDiv1RunnerIDsNamesChampIDs);
 
