@@ -22,7 +22,7 @@ if($_SESSION["loggedin"]=='')
 {
     // if the user isn't logged in, don't load the page
 }
-else if (str_contains($_SESSION['name'], 'club_stat') || str_contains($_SESSION['name'], 'my.pyne@gmail.com'))
+else if (str_contains($_SESSION['name'], 'club_stat_tk') || str_contains($_SESSION['name'], 'my.pyne@gmail.com'))
 {
 	//load all open champ races from the current year into an array
     $sqlOpenChamp = "SELECT RaceID, RaceName, RaceCode FROM tblRaces WHERE RaceDate BETWEEN '" . $RaceYear . "-01-01' AND '" . $RaceYear . "-12-31' AND RaceCode IN(1,2,4,9,32) ORDER BY field(RaceCode,1,9,32,2,4), RaceDate ASC";
