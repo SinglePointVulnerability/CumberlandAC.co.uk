@@ -74,7 +74,6 @@ function formPostSwitch($data) {
 	
 	if ($sqlPart2 <> '') {
 		$sqlLine = str_replace('[sql part 2]',$sqlPart2,$sqlPart1);
-		echo $sqlLine;
 		$sqlMulti .= $sqlLine;
 	}
 }
@@ -155,7 +154,7 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 	echo '<br>';
 	echo '</div>';
 	
-	$sqlGetAllRunners = "SELECT RunnerID, RunnerFullSocialMember, RunnerDiv, RunnerFirstName, RunnerSurname , RunnerDOB, RunnerSex FROM tblrunners order by RunnerSurname, RunnerFirstName";
+	$sqlGetAllRunners = "SELECT RunnerID, RunnerFullSocialMember, RunnerDiv, RunnerFirstName, RunnerSurname , RunnerDOB, RunnerSex FROM tblRunners order by RunnerSurname, RunnerFirstName";
 	
     $result = mysqli_query($conn,$sqlGetAllRunners);
 
