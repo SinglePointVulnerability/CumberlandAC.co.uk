@@ -140,7 +140,7 @@ if($_SESSION["loggedin"]=='')
 {
     // if the user isn't logged in, don't load the page
 }
-else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION['role'], 'race admin') || str_contains($_SESSION['role'], 'membership admin'))
+else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION['role'], 'club stats') || str_contains($_SESSION['role'], 'race committee') || str_contains($_SESSION['role'], 'membership sec'))
 {
 	echo '<div class = "txt">';
 	echo '<br>';
@@ -200,6 +200,7 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 				echo '<input type = "text"';
 				switch ($_SESSION['role']) {
 					case 'site admin':
+					case 'membership sec':
 					  break;
 					default:
 					  echo ' disabled ';
@@ -218,7 +219,7 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 				echo '<select id="memberstatuspicker' . $row["RunnerID"] . '\"';
 				switch ($_SESSION['role']) {
 					case 'site admin':
-					case 'membership admin':
+					case 'membership sec':
 					  break;
 					default:
 					  echo ' disabled ';
@@ -252,7 +253,7 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 				echo '<select id="divpicker' . $row["RunnerID"] . '"';
 				switch ($_SESSION['role']) {
 					case 'site admin':
-					case 'membership admin':
+					case 'race committee':
 					  break;
 					default:
 					  echo ' disabled ';

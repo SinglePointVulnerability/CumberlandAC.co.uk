@@ -28,13 +28,16 @@
 
     // if it exists, empty the array of raceIDs
     unset($arrRaceDetails);
-
+    // if it exists, empty the array of Div 6 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
+    unset($arrDiv6RunnerIDsNamesChampIDs);
+    // if it exists, empty the array of Div 5 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
+    unset($arrDiv5RunnerIDsNamesChampIDs);
+    // if it exists, empty the array of Div 4 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
+    unset($arrDiv4RunnerIDsNamesChampIDs);
     // if it exists, empty the array of Div 3 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
     unset($arrDiv3RunnerIDsNamesChampIDs);
-
     // if it exists, empty the array of Div 2 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
     unset($arrDiv2RunnerIDsNamesChampIDs);
-
     // if it exists, empty the array of Div 1 RunnerIDs, FirstNames, Surnames, and ChampionshipIDs
     unset($arrDiv1RunnerIDsNamesChampIDs);
 
@@ -96,13 +99,11 @@
 							  "RaceCode" => $row["RaceCode"],
 							  "RaceDate" => $row["RaceDate"],
 							  "RunnerDiv" => $row["RunnerDiv"],
-							  "RunnerSex" => $row["RunnerSex"],
 							  "ChampTotal" => $row["ChampTotal"],
 							  "RaceTime" => $row["RaceTime"],
 							  "RacePoints" => $row["RacePoints"],
 							  "RunnerID" => $row["RunnerID"],
-							  "RunnerName" => $row["RunnerName"],
-							  "RunnerSex" => $row["RunnerSex"]
+							  "RunnerName" => $row["RunnerName"]
 							 )
 					);
 				}
@@ -216,7 +217,6 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
     echo "</tr>";
     
 	$currentRunnerDiv = 0;
-	$currentRunnerSex = "";
 	
 	// code to display races and runners
     foreach($arrRankedRaceTimes as $arrRT)
@@ -224,12 +224,11 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 		$raceCounter = 0;
 		echo "<tr>";
 		
-		if($arrRT["RunnerDiv"] <> $currentRunnerDiv or $arrRT["RunnerSex"] <> $currentRunnerSex)
+		if($arrRT["RunnerDiv"] <> $currentRunnerDiv)
 		{
-			//mark the start of the division and sex
+			//mark the start of the division
 			$currentRunnerDiv = $arrRT["RunnerDiv"];
-			$currentRunnerSex = $arrRT["RunnerSex"];
-			echo "<td>Div $currentRunnerDiv : $currentRunnerSex</td></tr>\n<tr>";
+			echo "<td>Div $currentRunnerDiv</td></tr>\n<tr>";
 		}
 
 
@@ -246,7 +245,7 @@ echo "<table class=\"tblTimesPointsOuterOpen\">";
 			echo "<td class=\"tblTimesPointsInner\">";
 			
 			// Get the race times
-			if(mysqli_multi_query($conn,"SELECT RunnerID, RaceID, RaceTime, (101 - rank_division_gender_split(RunnerID, RaceID, RaceTime)) AS RacePoints FROM `tblRaceTimes` WHERE RunnerID = " . $arrRT["RunnerID"] . " AND RaceID = " . $arrRace["RaceID"]))
+			if(mysqli_multi_query($conn,"SELECT RunnerID, RaceID, RaceTime, (101 - rank_division_split(RunnerID, RaceID, RaceTime)) AS RacePoints FROM `tblRaceTimes` WHERE RunnerID = " . $arrRT["RunnerID"] . " AND RaceID = " . $arrRace["RaceID"]))
 			{
 				do{
 					if($result=mysqli_store_result($conn)){

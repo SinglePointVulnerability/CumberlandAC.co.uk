@@ -62,7 +62,7 @@
 				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 			}
-			if ($_SESSION["role"] == "race admin") {
+			if ($_SESSION["role"] == "club stats") {
 				echo '<tr>' . PHP_EOL;
 				echo '<td span = "2"><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
@@ -70,7 +70,12 @@
 				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
 			}
-			if ($_SESSION["role"] == "membership admin") {
+			if ($_SESSION["role"] == "race committee") {
+				echo '<tr>' . PHP_EOL;
+				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
+				echo '</tr>' . PHP_EOL;
+			}
+			if ($_SESSION["role"] == "membership sec") {
 				echo '<tr>' . PHP_EOL;
 				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
 				echo '</tr>' . PHP_EOL;
