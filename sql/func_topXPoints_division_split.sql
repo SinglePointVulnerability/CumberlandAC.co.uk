@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `topXPoints_division_split`(`input_runnerID` INT, `input_raceCode` INT, `input_champYear` INT, `input_topX` INT) RETURNS int(3)
+CREATE FUNCTION `topXPoints_division_split`(`input_runnerID` INT, `input_raceCode` INT, `input_champYear` INT, `input_topX` INT) RETURNS int(3)
 BEGIN
 
 DECLARE topXPoints INT;

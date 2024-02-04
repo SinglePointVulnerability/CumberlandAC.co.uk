@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `rank_division_split`(`input_runnerID` INT, `input_raceID` INT, `input_raceTime` TIME) RETURNS int(3)
+CREATE FUNCTION `rank_division_split`(`input_runnerID` INT, `input_raceID` INT, `input_raceTime` TIME) RETURNS int(3)
 BEGIN
 	DECLARE raceRank INT;
 	DECLARE runnerDivision INT;
