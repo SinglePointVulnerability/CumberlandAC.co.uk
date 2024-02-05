@@ -270,7 +270,7 @@ else if (str_contains($_SESSION['name'], 'club_stat_tk') || str_contains($_SESSI
                     // output the next line(s) of JavaScript
                     echo ", '" . $row["RunnerID"] . "_" . $row["RunnerFirstName"] . " " . $row["RunnerSurname"] . "': []";
                 }
-                $intRunnerDiv3Count++;
+                $intRunnerDiv5Count++;
             }
             if($row["RunnerDiv"]=='6') {
                 if($intRunnerDiv6Count==0){
