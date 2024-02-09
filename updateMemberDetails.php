@@ -20,7 +20,7 @@
 </head>
 	<body>
 		<div class = "main-page-content">
-			<form id = "member-details">
+
 <?php
 $sqlMulti = '';
 	
@@ -160,7 +160,12 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 
     if (mysqli_num_rows($result) > 0)
     {
-		echo "<table>";
+		echo 'Narrow down the list by starting to type the first or second name of the person you\'re looking for! (3 letters minimum)<br><br>';
+		echo '<font class = "txt"><b>Type here:</b> </font><input type = "text" class = "txt" id = "filterInput" placeholder = "search names..."><br><br>';
+		
+		echo '<form id = "member-details">';
+		echo '<table id = "membersTable">';
+		echo '<thead>';
 		echo "<tr>";
 		echo "<th>First name</th>";
 		echo "<th>Surname</th>";
@@ -168,6 +173,8 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 		echo "<th>Full / Social / Non-member</th>";
 		echo "<th>Division</th>";
 		echo "</tr>";
+		echo '</thead>';
+		echo '<tbody>';
         // output data of each row
         while($row = $result->fetch_assoc())
         {
@@ -275,13 +282,15 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 				echo '</select>';
 			echo '</td>';
 			echo "</tr>\n";
+			echo '</tbody>';
 		}
 		echo "</table>";
 	}
 }
 
+echo '</form>';
+
 ?>
-			</form>
 		</div>
 		<div class = "floating-content">
 			<form id = "admin-actions" method = "post" action = "updateMemberDetails.php">
@@ -319,14 +328,42 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 		
 		<script>
 			$('#member-details :input').on('change', function() {
-				var changedField = $(this).attr('id');
-				var changedValue = $(this).val();
-				var changesList = $('#changes-list').val();
-				var changesConcatenated = changedField + '(' + changedValue + '), ' + changesList;
-				
-				$('#changes-list').val(changesConcatenated);
-				$('#changes-list-hidden').val(changesConcatenated);
+				if($(this).attr('id') !== 'filterInput') {
+					var changedField = $(this).attr('id');
+					var changedValue = $(this).val();
+					var changesList = $('#changes-list').val();
+					var changesConcatenated = changedField + '(' + changedValue + '), ' + changesList;
+					
+					$('#changes-list').val(changesConcatenated);
+					$('#changes-list-hidden').val(changesConcatenated);
+				}
 			});	
 		</script>
+		<script>			
+			// handle filtering based on user input
+			document.getElementById("filterInput").addEventListener("input",
+				function() {
+					var filterValue = this.value.toLowerCase();
+					if(filterValue.length >= 3 || filterValue.length == 0) {
+						var rows = document.getElementById("membersTable").querySelectorAll("tbody tr");
+						
+						rows.forEach(function(row) {
+							var cells = row.getElementsByTagName("td");
+							var display = false;
+							
+							for(var i = 0; i < cells.length; i++) {
+								var cellText = cells[i].innerHTML.toLowerCase();
+								
+								
+								if(cellText.indexOf(filterValue) > -1) {
+									display = true;
+									break;
+								}
+							}
+							row.style.display = display ? "" : "none";
+						});
+					}
+				});
+	</script>		
     </body>
 </html>
