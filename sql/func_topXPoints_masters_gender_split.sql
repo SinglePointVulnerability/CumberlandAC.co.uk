@@ -3,6 +3,7 @@ CREATE FUNCTION `topXPoints_masters_gender_split`(`input_runnerID` INT, `input_r
 BEGIN
 
 DECLARE topXPoints INT;
+SET @counter = 0;
 
 SET topXPoints = (
 SELECT SUM(innerQuery.racepoints)
@@ -11,6 +12,7 @@ FROM (
 		,rac.ChampYear
 		,rac.RaceCode
 		,rt.RaceID
+		,IF(rac.RaceDist = 16093, @counter:=@counter+1,0) AS 10miRaceCounter
 		,rt.RaceTime
 		,(101 - rank_masters_gender_split(rt.RunnerID, input_runnerSex, rt.RaceID, rt.MastersRaceTime)) AS racepoints
 	FROM tblRaceTimes rt
@@ -25,8 +27,13 @@ FROM (
 	) innerQuery
 WHERE RunnerID = input_runnerID
 AND RaceCode = input_raceCode
+AND 10miRaceCounter < 3
 );
 
 RETURN topXPoints;
 END$$
 DELIMITER ;
+
+-- 05/04/24: Added logic to ensure at least one of the three races in the Open (Long) category is a HM or longer 
+-- - inner query; if race dist  = [10 miles] then increase counter by 1
+-- - outer query; SUM... WHERE 10miRaceCounter < 3
