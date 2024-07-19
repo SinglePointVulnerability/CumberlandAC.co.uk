@@ -20,8 +20,17 @@
 	}	
 	.banner {
 		position: relative;
+		z-index: 1;
 		width: 100%;
 	}
+	.banner-marketing {
+		position: absolute;
+		width: 25%;
+		top: 17%;
+		right: 10%;
+		z-index: 2;
+		opacity: 0.8;
+	}	
 	.admin-login-banner {
 		position: relative;
 		width: 100%;
@@ -91,7 +100,7 @@
 	}
 
 	.main-page-content {
-		z-index: 1;
+		width: 100%;
 	}
 
 /* Update Member Details */

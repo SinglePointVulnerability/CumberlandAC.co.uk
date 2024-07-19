@@ -1,5 +1,8 @@
 <?php
 /* Index*/
+
+include('secure/DBconn.php');
+
 function auto_version($file='')
 {
 	// script to force refresh of a file if it's been modified
@@ -41,6 +44,63 @@ function auto_version($file='')
 			}	
 		}
 		</script>
+<?php
+
+	// training data
+	$arrTrainingDataFull = array();
+	$arrTrainingDataIndividual = array();
+
+    // an array of run leader data
+    $arrRunLeaderDataFull = array();
+	$arrRunLeaderDataIndividual = array();
+	
+ $sqlRunLeader = 'SELECT * FROM `tblrunleader` LEFT JOIN tblrunners ON tblrunleader.RunnerID = tblrunners.RunnerID WHERE LeaderActive = 1';
+
+ $sqlTraining = 'SELECT * FROM `tbltraining` WHERE RouteActive = 1';
+
+	// Get the run leader data
+	$resultRunLeader = mysqli_query($conn,$sqlRunLeader);
+	
+	if(mysqli_num_rows($resultRunLeader) > 0)
+	{
+		while($row = $resultRunLeader->fetch_assoc())
+		{
+			array_push($arrRunLeaderDataFull,
+				array(
+					  "RunnerName" => $row["RunnerFirstName"],
+					  "RunLeaderID" => $row["RunLeaderID"],
+					  "RunLeaderPhotoLink" => $row["RunLeaderPhotoLink"]
+					 )
+			);
+
+		}
+	}    
+	else {
+		echo "Oops! I couldn't find any active run leaders for this week";
+	}
+
+	// Get the training data
+	$resultTraining = mysqli_query($conn,$sqlTraining);
+	
+	if(mysqli_num_rows($resultTraining) > 0)
+	{
+		while($row = $resultTraining->fetch_assoc())
+		{
+			array_push($arrTrainingDataFull,
+				array(
+					  "RouteDescription" => $row["RouteDescription"],
+					  "TrainingID" => $row["TrainingID"],
+					  "RouteImageLink" => $row["RouteImageLink"]
+					 )
+			);
+		}
+	}    
+	else {
+		echo "Oops! I couldn't find any active training data for this week";
+	}
+
+
+?>
     </head>
     <body>
 	<div class="parent-container">
@@ -88,8 +148,28 @@ function auto_version($file='')
 				hill training. The location varies throughout the year
 				depending on the type of training. The location and plan for
 				each session is currently sent as a weekly e-mail to all
-				members. The <b>current block of training</b> is 'Threshold training
-				which starts at 18:00 from Lillyhall Industrial Estate'. 
+				members.
+			</p>
+			<p>This week's run leaders:<br>
+			<table>
+<?php
+	//loop through the run leader array
+	foreach($arrRunLeaderDataFull as $arrRunLeaderDataIndividual)
+	{
+		echo "<tr><td><img src='" . $arrRunLeaderDataIndividual["RunLeaderPhotoLink"] . "' style='width:200px;height:250px;'/></td><td>" . $arrRunLeaderDataIndividual["RunnerName"] . "</td><tr>";
+	}
+?>
+			</table>
+			<p>This week's training route:<br>
+			<table>
+<?php
+	//loop through the training array
+	foreach($arrTrainingDataFull as $arrTrainingDataIndividual)
+	{
+		echo "<tr><td><img src='" . $arrTrainingDataIndividual["RouteImageLink"] . "' style='width:50%;height:50%;'/></td><td>" . $arrTrainingDataIndividual["RouteDescription"] . "</td><tr>";
+	}
+?>
+			</table>
 			</p>
 			<p>
 				Please check back here for training updates
