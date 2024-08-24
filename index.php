@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	if(session_status() === PHP_SESSION_NONE) {
+		session_start();
+	}
 	// index
 	require 'modules/fileAutoVersionFunction.php';
 ?>
@@ -15,7 +17,7 @@
 	<div class="parent-container">
 		<div class="page-banner">
 			<img class="banner" src="img/main-banner.png" onclick="location.href='index.php'"/>
-			<img class="banner-marketing" src="media/marketing/2024-07-24_FoR-advert.png" onclick="location.href='media/marketing/2024-07-24_FoR-leaflet.pdf'"/>
+			<!-- <img class="banner-marketing" src="media/marketing/2024-07-24_FoR-advert.png" onclick="location.href='media/marketing/2024-07-24_FoR-leaflet.pdf'"/> -->
 		</div>
 		<div class="main-page-content">
 			<?php require 'modules/navButtonDiv2.php'; ?>
@@ -34,7 +36,7 @@
 					The club normally meets every Tuesday at Workington Leisure Centre, Workington at 5:50pm for a 6:00pm start. 
 					<br>
 					The main group is organised such that runners of a wide range of abilities can run together.
-					​<br>
+					<br>
 					Training sessions take place on Thursday evenings; details of current training can be found on the Training page.
 					<br>
 					Thinking of joining us? Find our membership form <a href = "documents.php"><b>here</b></a>
@@ -49,6 +51,9 @@
 				</p>
 			</div>
 		</div>
+<?php
+	include 'modules/floatingMenu.php';
+?>
 	</div>
     </body>
 </html>

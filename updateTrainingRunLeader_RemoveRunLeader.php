@@ -41,9 +41,8 @@
 			
 			var RunLeaderPhotoLink = resultArray[2];
             document.getElementById('imageContainer').innerHTML = '<img src="' + RunLeaderPhotoLink + '" alt="No Photo" style="width:200px;height:250px;">';
-			document.getElementById('imageSelectContainer').innerHTML = '<input type="file" name="runleader_image" accept="image/*"><br>' +
-				'<br><input type="hidden" name="form_url" value="updateTrainingRunLeader_UpdateRunLeader.php">' +
-				'<br>Delete my photo <input type="checkbox" id="delete_photo" name="delete_photo" value="1">' +
+			document.getElementById('imageSelectContainer').innerHTML = '<input type="hidden" name="form_url" value="updateTrainingRunLeader_RemoveRunLeader.php">' +
+				'<br>Remove this run leader <input type="checkbox" id="remove_run_leader" name="remove_run_leader" value="1">' +
 				'<br><button type="submit">Submit</button>';
         };
     </script>
@@ -63,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	include('updateTrainingRunLeader_process_form.php');
 } else {
 ?>
-	<form action="updateTrainingRunLeader_UpdateRunLeader.php" method="post" enctype="multipart/form-data">
-	<h1>Cumberland AC Training and Run Leader Admin | Update run leader profile</h1>
+	<form action="updateTrainingRunLeader_RemoveRunLeader.php" method="post" enctype="multipart/form-data">
+	<h1>Cumberland AC Training and Run Leader Admin | Remove a run leader profile</h1>
     <h2>Search Run Leaders Database</h2>
      <input type="text" id="searchBox" onkeyup="fetchNames()" placeholder="Search...">
     <h2>Pick a name from the list</h2>

@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
 ?>
 	<form action="updateTrainingRunLeader_NewRunLeader.php" method="post">
-	<h1>Cumberland AC Training and Run Leader Admin</h1>
+	<h1>Cumberland AC Training and Run Leader Admin | Add a new run leader</h1>
     <h2>Search Members Database</h2>
      <input type="text" id="searchBox" onkeyup="fetchNames()" placeholder="Search...">
     <h2>Pick a name from the list</h2>

@@ -1,8 +1,12 @@
 <?php
-	session_start();
-	// index
+	if(session_status() === PHP_SESSION_NONE) {
+		session_start();
+	}
+	$callingPage = "adminLanding.php";
 	require 'modules/fileAutoVersionFunction.php';
-    include('secure/authenticate.php');
+	if(!isset($_SESSION["loggedin"])) {
+		include('secure/authenticate.php');
+	}
 ?>
 <html>
     <head>
@@ -37,54 +41,9 @@
 			</p>
 		</div>
 
-		<div class = "floating-content">
-			<form id = "admin-actions" method = "post" action = "adminLanding.php">
-				<table>
-					<tr>
-						<td span = "2" class = "txt"><b><?php echo $_SESSION["name"]; ?></b></td>
-					</tr>
-					<tr>
-						<td span = "2" class = "txt">Role: <b><?php echo $_SESSION["role"]; ?></b></td>
-					</tr>
-					<tr>
-						<td span = "2" class = "txt"><br><b>Actions</b></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><button type = "submit" formaction = "logout.php">Logout</button></td>
-					</tr>
-		<?php
-			if ($_SESSION["role"] == "site admin") {
-				echo '<tr>' . PHP_EOL;
-				echo '<td span = "2"><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
-				echo '</tr>' . PHP_EOL;
-				echo '<tr>' . PHP_EOL;
-				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
-				echo '</tr>' . PHP_EOL;
-			}
-			if ($_SESSION["role"] == "club stats") {
-				echo '<tr>' . PHP_EOL;
-				echo '<td span = "2"><button type = "submit" formaction = "addRaceTime.php">Add race time</button></td>' . PHP_EOL;
-				echo '</tr>' . PHP_EOL;
-				echo '<tr>' . PHP_EOL;
-				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
-				echo '</tr>' . PHP_EOL;
-			}
-			if ($_SESSION["role"] == "race committee") {
-				echo '<tr>' . PHP_EOL;
-				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
-				echo '</tr>' . PHP_EOL;
-			}
-			if ($_SESSION["role"] == "membership sec") {
-				echo '<tr>' . PHP_EOL;
-				echo '<td span = "2"><button type = "submit" formaction = "updateMemberDetails.php">Member details</button></td>' . PHP_EOL;
-				echo '</tr>' . PHP_EOL;
-			}
-		?>
-
-				</table>
-			</form>
-		</div>
+<?php
+	include 'modules/floatingMenu.php';
+?>
 	</div>
 
     </body>

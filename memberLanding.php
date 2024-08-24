@@ -2,17 +2,12 @@
 	if(session_status() === PHP_SESSION_NONE) {
 		session_start();
 	}
-	
-function auto_version($file='')
-{
-	// script to force refresh of a file if it's been modified
-	// since it was last cache'd in the user's browser
-    if(!file_exists($file))
-        return $file;
- 
-    $mtime = filemtime($file);
-    return $file.'?'.$mtime;
-}
+	// index
+	$callingPage = "memberLanding.php";
+	require 'modules/fileAutoVersionFunction.php';
+	if(!isset($_SESSION["loggedin"])) {
+		include('secure/authenticate.php');
+	}
 ?>
 <html>
     <head>
@@ -20,7 +15,7 @@ function auto_version($file='')
 		<link rel="stylesheet" type="text/css" href="<?php echo auto_version('css/styles.css'); ?>" media="screen" />
 		
 		<?php require 'modules/navButtonScript.php'; ?>
-		
+
     </head>
     <body>
 	<div class="parent-container">
@@ -34,17 +29,19 @@ function auto_version($file='')
 		</div>
 		<div id="txt-id" class="txt">
 			<h1>
-				Gallery
+				Member Landing Page
 			</h1>
-			<i>Photos, short videos and other interesting media from club events</i>
 		</div>
 		<div class="txt">
 			<p>
-				Wow, such empty!
-				<br>Sorry, since I'm such a new website we haven't got anything to show :(
-				<br>We'll start making memories soon, and this space will fill up :)
+				Hi, <b><?php echo $_SESSION["name"]; ?></b>, this is the members 'hang out'!
+				<br>
+				You'll see a menu in the top-right of this page, which allows you to navigate to members-only exclusive content 
+				<br>
+				Your role is: <b><?php echo $_SESSION["role"]; ?></b>
 			</p>
 		</div>
+
 <?php
 	include 'modules/floatingMenu.php';
 ?>

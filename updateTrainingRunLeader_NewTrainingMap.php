@@ -17,21 +17,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
     <script>
-        function fetchNames() {
-            var searchTerm = document.getElementById('searchBox').value;
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'RunLeaders_fetch_names.php?search=' + searchTerm, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('RunLeaderNamesList').innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        }
-
-        window.onload = function() {
-            fetchNames(); // Load names on page load
-        };
 		
         function loadImage() {
             var selectedItem = document.getElementById('RunLeaderNamesList').value;
@@ -64,18 +49,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
 ?>
 	<form action="updateTrainingRunLeader_UpdateRunLeader.php" method="post" enctype="multipart/form-data">
-	<h1>Cumberland AC Training and Run Leader Admin | Update run leader profile</h1>
+	<h1>Cumberland AC Training and Run Leader Admin | Upload training map</h1>
     <h2>Search Run Leaders Database</h2>
-     <input type="text" id="searchBox" onkeyup="fetchNames()" placeholder="Search...">
-    <h2>Pick a name from the list</h2>
-	<select id="RunLeaderNamesList" name = "RunLeaderNamesList" size="10" onclick="loadImage()">
-        <!-- Options will be populated dynamically -->
-    </select>
-	<div id="imageContainer" >
-        <!-- Image will be displayed here -->
-	</div>
+
 	<div id="imageSelectContainer">
         <!-- Image selector and submit button will be displayed here -->
+		<input type="file" name="trainingmap_image" accept="image/*"><br>
+		<br><input type="hidden" name="form_url" value="updateTrainingRunLeader_NewTrainingMap.php">
+		<!-- <br>Delete my photo <input type="checkbox" id="delete_photo" name="delete_photo" value="1"> -->
+		<br><button type="submit">Submit</button>
 	</div>
 	</form>
 <?php

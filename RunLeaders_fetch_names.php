@@ -15,7 +15,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 while ($row = $result->fetch_assoc()) {
-    echo '<option>' . htmlspecialchars($row['RunnerFirstName']) . ' ' . htmlspecialchars($row['RunnerSurname']) . ' ' . htmlspecialchars($row['RunLeaderPhotoLink']) . ' ' . htmlspecialchars($row['RunLeaderID']) . '</option>';
+    echo '<option>' . htmlspecialchars($row['RunLeaderID']) . '_' . htmlspecialchars($row['RunnerFirstName']) . ' ' . htmlspecialchars($row['RunnerSurname']) . '_' . htmlspecialchars($row['RunLeaderPhotoLink']) . '</option>';
 }
 
 $stmt->close();

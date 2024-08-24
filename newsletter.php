@@ -1,5 +1,8 @@
 <?php
-/* Index*/
+	if(session_status() === PHP_SESSION_NONE) {
+		session_start();
+	}
+
 function auto_version($file='')
 {
 	// script to force refresh of a file if it's been modified
@@ -11,50 +14,59 @@ function auto_version($file='')
     return $file.'?'.$mtime;
 }
 ?>
+
+<?php
+
+// Handle the form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate and sanitize the title
+    $title = preg_replace("/[^a-zA-Z0-9\s\.\,\-\!\?]/", "", $_POST['title']);
+
+    // Get the month and year
+    $month = $_POST['month'];
+    $year = $_POST['year'];
+
+    // Get the file details
+    $file = $_FILES['file'];
+    $fileName = $file['name'];
+    $fileTmpName = $file['tmp_name'];
+    $fileError = $file['error'];
+
+    // Check if a file was uploaded and there were no errors
+    if ($fileError === 0) {
+        // Rename the file based on the selected month, year, and title
+        $newFileName = 'CAC-Newsletter-' . $year . '-' . $month . '-' . str_replace(' ', '_', $title) . '.pdf';
+        $fileDestination = 'media/docs/' . $newFileName;
+
+        // Move the uploaded file to the uploads directory
+        if (move_uploaded_file($fileTmpName, $fileDestination)) {
+			echo "Newsletter uploaded successfully!";
+        } else {
+            echo "Error uploading the file.";
+        }
+    } else {
+        echo "There was an error with the file upload.";
+    }
+}
+
+?>
+
 <html>
     <head>
         <!--<meta http-equiv="refresh" content="15; url='http://cumberland-ac.weebly.com/'" />-->
 		<link rel="stylesheet" type="text/css" href="<?php echo auto_version('css/styles.css'); ?>" media="screen" />
 
-		<script>
-		function displayResult(a) {
-			var btnSet1 = "<img class = \"btn btn-lvl2 btn-Newsletter\" src = \"<?php echo auto_version('img/btn-Newsletter.png'); ?>\" onClick=\"location.href='newsletter.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-Gallery\" src = \"<?php echo auto_version('img/btn-Gallery.png'); ?>\" onClick=\"location.href='gallery.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-Documents\" src = \"<?php echo auto_version('img/btn-Documents.png'); ?>\" onClick=\"location.href='documents.php'\">\n" +
-						  "<div class = \"btn\"></div>\n" +
-						  "<div class = \"btn\"></div>\n";
-						  
-			var btnSet2 = "<img class = \"btn btn-lvl2 btn-Training\" src = \"<?php echo auto_version('img/btn-Training.png'); ?>\" onClick=\"location.href='training.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-SocialEvents\" src = \"<?php echo auto_version('img/btn-SocialEvents.png'); ?>\" onClick=\"location.href='social-events.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-Races\" src = \"<?php echo auto_version('img/btn-Races.png'); ?>\" onClick=\"location.href='races.php'\">" +
-						  "<div class = \"btn\"></div>\n" +
-						  "<div class = \"btn\"></div>\n";		
-																 
-			if (a == "btnMed") {
-				document.getElementById("lvl2-btns").innerHTML = btnSet1;
-			}
-			else if (a == "btnCal") {
-				document.getElementById("lvl2-btns").innerHTML = btnSet2;
-			}
-			else {
-				document.getElementById("lvl2-btns").innerHTML = "";
-			}	
-		}
-		</script>
+		<?php require 'modules/navButtonScript.php'; ?>
+		
     </head>
     <body>
 	<div class="parent-container">
 		<div class="page-banner">
 			<img class="banner" src="img/main-banner.png" onclick="location.href='index.php'"/>
 		</div>
-		<div class="nav-buttons">
-			<!-- add modified timestamp (php) to file URLs to force cache refresh -->
-			<img class = "btn btn-lvl1 btn-Med" src = "<?php echo auto_version('img/btn-Med.png'); ?>" onClick="displayResult('btnMed')">
-			<img class = "btn btn-lvl1 btn-Cal" src = "<?php echo auto_version('img/btn-Cal.png'); ?>" onClick="displayResult('btnCal')">
-			<img class = "btn btn-lvl1 btn-Champ" src = "<?php echo auto_version('img/btn-Champ.png'); ?>" onClick="location.href='club-championship.php'">
-			<img class = "btn btn-lvl1 btn-Merch" src = "<?php echo auto_version('img/btn-Merch.png'); ?>" onClick="location.href='merchandise.php'">
-			<img class = "btn btn-lvl1 btn-MemArea" src = "<?php echo auto_version('img/btn-MemArea.png'); ?>" onClick="displayResult('')">
-		</div>
+		
+		<?php require 'modules/navButtonDiv2.php'; ?>
+		
 		<div id="lvl2-btns" class="nav-buttons">
 		</div>
 		<div id="txt-id" class="txt">
@@ -65,53 +77,124 @@ function auto_version($file='')
 		</div>
 		<div class="txt">
 			<p>
-				<s>Find archived copies of published newsletters right here, instead of having to rifle through your emails</s>
-				In light of a recent development, unfortunately, we have decided to remove the archived newsletters - this is a temporary measure, and they will be back online
+				Find archived copies of published newsletters right here, instead of having to rifle through your emails
 
 			</p>
-			<p>
-				<h2>
-					Newsletter August '23
-				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-08-thumb.png'); ?>">
-			</p>
-			<p>
-				<h2>
-					Newsletter July '23
-				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-07-thumb.png'); ?>">
-			</p>
-			<p>
-				<h2>
-					Newsletter June '23
-				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-06-thumb.png'); ?>">
-			</p>
-			<p>
-				<h2>
-					Newsletter May '23
-				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-05-thumb.png'); ?>">
-			</p>
-			<p>
-				<h2>
-					Newsletter Apr '23
-				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-04-thumb.png'); ?>">
-			</p>
-			<p>
-				<h2>
-					Newsletter Mar '23
-				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-03-thumb.png'); ?>">
-			</p>
-			<p>
-				<h2>
-					Newsletter Feb '23
-				</h2>
-				<img src="<?php echo auto_version('img/CAC-Newsletter-2023-02-thumb.png'); ?>">
-			</p>
+<?php
+if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION['role'], 'jog journalist'))
+{
+?>
+<hr>
+		<h2>Add a new newsletter</h2>
+			<form action="" method="POST" enctype="multipart/form-data">
+				<label for="title">Title:</label>
+				<input type="text" name="title" id="title" required maxlength="100" pattern="[a-zA-Z0-9\s\.\,\-\!\?]+"><br><br>
+
+				<label for="month">Month:</label>
+				<select name="month" id="month" required>
+					<?php
+					$months = [
+						'01' => 'January',
+						'02' => 'February',
+						'03' => 'March',
+						'04' => 'April',
+						'05' => 'May',
+						'06' => 'June',
+						'07' => 'July',
+						'08' => 'August',
+						'09' => 'September',
+						'10' => 'October',
+						'11' => 'November',
+						'12' => 'December'
+					];
+					foreach ($months as $key => $value) {
+						echo "<option value=\"$key\">$value</option>";
+					}
+					?>
+				</select><br><br>
+
+				<label for="year">Year:</label>
+				<select name="year" id="year" required>
+					<?php
+					$currentYear = date('Y');
+					echo "<option value=\"$currentYear\">$currentYear</option>";
+					echo "<option value=\"" . ($currentYear + 1) . "\">" . ($currentYear + 1) . "</option>";
+					?>
+				</select><br><br>
+
+				<label for="file">Upload PDF:</label>
+				<input type="file" name="file" id="file" accept="application/pdf" required><br><br>
+
+				<button type="submit">Upload</button>
+			</form>
+<hr>
+<?php
+}
+
+// Set the directory path
+$directory = 'media/docs/';
+
+// Get all files in the directory that start with "CAC-Newsletter"
+$files = glob($directory . 'CAC-Newsletter*.pdf');
+
+// Initialize an array to store file details
+$newsletters = [];
+
+// Loop through each file
+foreach ($files as $file) {
+    // Extract the filename from the full path
+    $filename = basename($file);
+
+    // Extract the year, month, and title from the filename
+    if (preg_match('/CAC-Newsletter-(\d{4})-(\d{2})(?:-(.+))?\.pdf$/', $filename, $matches)) {
+        $year = $matches[1];
+        $month = $matches[2];
+        $title = isset($matches[3]) ? str_replace('-', ' ', $matches[3]) : null;
+
+        // If title is missing, create a default title
+        if (empty($title)) {
+            $title = "CAC Newsletter " . date('F Y', strtotime("$year-$month"));
+        }
+
+        // Add the file details to the array
+        $newsletters[] = [
+            'year' => $year,
+            'month' => $month,
+            'title' => $title,
+            'file' => $file
+        ];
+    }
+}
+
+// Sort the array by year and month in descending order
+usort($newsletters, function ($a, $b) {
+    return ($b['year'] . $b['month']) <=> ($a['year'] . $a['month']);
+});
+
+
+?>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Title</th>
+						<th>Link</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($newsletters as $newsletter): ?>
+						<tr>
+							<td><?php echo date('F Y', strtotime($newsletter['year'] . '-' . $newsletter['month'])); ?></td>
+							<td><?php echo htmlspecialchars($newsletter['title']); ?></td>
+							<td><a href="<?php echo $newsletter['file']; ?>" target="_blank">View Newsletter</a></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
 		</div>
+<?php
+	include 'modules/floatingMenu.php';
+?>
 	</div>
     </body>
 </html>

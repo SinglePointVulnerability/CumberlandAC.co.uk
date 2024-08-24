@@ -1,6 +1,8 @@
 <?php
-/* Index*/
-
+	if(session_status() === PHP_SESSION_NONE) {
+		session_start();
+	}
+	
 include('secure/DBconn.php');
 
 function auto_version($file='')
@@ -19,32 +21,17 @@ function auto_version($file='')
         <!--<meta http-equiv="refresh" content="15; url='http://cumberland-ac.weebly.com/'" />-->
 		<link rel="stylesheet" type="text/css" href="<?php echo auto_version('css/styles.css'); ?>" media="screen" />
 
-		<script>
-		function displayResult(a) {
-			var btnSet1 = "<img class = \"btn btn-lvl2 btn-Newsletter\" src = \"<?php echo auto_version('img/btn-Newsletter.png'); ?>\" onClick=\"location.href='newsletter.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-Gallery\" src = \"<?php echo auto_version('img/btn-Gallery.png'); ?>\" onClick=\"location.href='gallery.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-Documents\" src = \"<?php echo auto_version('img/btn-Documents.png'); ?>\"  onClick=\"location.href='documents.php'\">\n" +
-						  "<div class = \"btn\"></div>\n" +
-						  "<div class = \"btn\"></div>\n";
-						  
-			var btnSet2 = "<img class = \"btn btn-lvl2 btn-Training\" src = \"<?php echo auto_version('img/btn-Training.png'); ?>\"  onClick=\"location.href='training.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-SocialEvents\" src = \"<?php echo auto_version('img/btn-SocialEvents.png'); ?>\" onClick=\"location.href='social-events.php'\">\n" +
-						  "<img class = \"btn btn-lvl2 btn-Races\" src = \"<?php echo auto_version('img/btn-Races.png'); ?>\"  onClick=\"location.href='races.php'\">" +
-						  "<div class = \"btn\"></div>\n" +
-						  "<div class = \"btn\"></div>\n";		
-																 
-			if (a == "btnMed") {
-				document.getElementById("lvl2-btns").innerHTML = btnSet1;
-			}
-			else if (a == "btnCal") {
-				document.getElementById("lvl2-btns").innerHTML = btnSet2;
-			}
-			else {
-				document.getElementById("lvl2-btns").innerHTML = "";
-			}	
-		}
-		</script>
+		<?php require 'modules/navButtonScript.php'; ?>
+		
 <?php
+	// Function to undo the sanitisation
+	function undoSanitisedInput($str) {
+		return str_replace(
+			["''", '""', "\\\\", "\\;", "\\--"],
+			["'", '"', "\\", ";", "--"],
+			$str
+		);
+	}
 
 	// training data
 	$arrTrainingDataFull = array();
@@ -62,7 +49,7 @@ function auto_version($file='')
 	$resultRunLeader = mysqli_query($conn,$sqlRunLeader);
 	
 	if(mysqli_num_rows($resultRunLeader) > 0)
-	{
+	{	
 		while($row = $resultRunLeader->fetch_assoc())
 		{
 			array_push($arrRunLeaderDataFull,
@@ -107,14 +94,9 @@ function auto_version($file='')
 		<div class="page-banner">
 			<img class="banner" src="img/main-banner.png" onclick="location.href='index.php'"/>
 		</div>
-		<div class="nav-buttons">
-			<!-- add modified timestamp (php) to file URLs to force cache refresh -->
-			<img class = "btn btn-lvl1 btn-Med" src = "<?php echo auto_version('img/btn-Med.png'); ?>" onClick="displayResult('btnMed')">
-			<img class = "btn btn-lvl1 btn-Cal" src = "<?php echo auto_version('img/btn-Cal.png'); ?>" onClick="displayResult('btnCal')">
-			<img class = "btn btn-lvl1 btn-Champ" src = "<?php echo auto_version('img/btn-Champ.png'); ?>" onClick="location.href='club-championship.php'">
-			<img class = "btn btn-lvl1 btn-Merch" src = "<?php echo auto_version('img/btn-Merch.png'); ?>" onClick="location.href='merchandise.php'">
-			<img class = "btn btn-lvl1 btn-MemArea" src = "<?php echo auto_version('img/btn-MemArea.png'); ?>" onClick="displayResult('')">
-		</div>
+		
+		<?php require 'modules/navButtonDiv2.php'; ?>
+		
 		<div id="lvl2-btns" class="nav-buttons">
 		</div>
 		<div id="txt-id" class="txt">
@@ -123,9 +105,13 @@ function auto_version($file='')
 			</h1>
 		</div>
 		<div class="txt">
+		<table>
+		<tr>
+		<td>
+			<b>Tuesday's Social Run:</b>
 			<p>
 				The club provide a social run that follows different routes but
-				always leaves Workington Leisure Centre every Tuesday at 18:00.
+				always leaves Workington Leisure Centre <b>every Tuesday at 18:00</b>.
 				The run is open to all club members and every effort is made to
 				accommodate runners of all paces. There are stops to gather
 				everyone back together, which gives plenty opportunity for the
@@ -135,47 +121,79 @@ function auto_version($file='')
 				non-members to come along for a few weeks to see whether
 				Cumberland AC is a good fit for them.
 			</p>
+		</td>
+		<td>
+			<b>This week's Run Leaders:</b><br>
+			<?php
+				echo "<div class='photo-grid-container'>";
+				//loop through the run leader array
+				foreach($arrRunLeaderDataFull as $arrRunLeaderDataIndividual)
+				{
+					// echo "<td><img src='" . $arrRunLeaderDataIndividual["RunLeaderPhotoLink"] . "' style='width:200px;height:250px;'/></td><td>" . $arrRunLeaderDataIndividual["RunnerName"] . "</td>";
+					echo '<div class="photo-grid-item">';
+					echo $arrRunLeaderDataIndividual["RunnerName"];
+					echo '<br>';
+					echo '<img src="' . $arrRunLeaderDataIndividual["RunLeaderPhotoLink"] . '" alt="Image">';
+					echo '</div>';
+				}
+				echo "</div>";
+			?>
+		</td>
+		</tr>
+		<tr>
+		<td>
 			<p>
 				Occasionally throughout the year the social run is replaced by
 				one of our 'special' events. This includes a number of handicap
 				races and some gentle intro to off-road running (e.g. the
 				Rannerdale Bluebell run). More info to follow
 			</p>
+		</td>
+		<td>
+		</td>
+		</tr>
+		</table>
+
+		<table>
+		<tr>
+		<td>
+			<b>Thursday's Club Training</b>
 			<p>
 				Club training is run by our coaches and is arranged in blocks
 				which focus on a different develop area. This includes
 				threshold training, speed work and everybody's favourite winter
-				hill training. The location varies throughout the year
-				depending on the type of training. The location and plan for
-				each session is currently sent as a weekly e-mail to all
-				members.
+				hill training. Club training is <b>every Thursday at 18:00</b>.
+				The location varies throughout the year	depending on the type
+				of training. The location and plan for each session is
+				currently sent as a weekly e-mail to all members.
 			</p>
-			<p>This week's run leaders:<br>
-			<table>
-<?php
-	//loop through the run leader array
-	foreach($arrRunLeaderDataFull as $arrRunLeaderDataIndividual)
-	{
-		echo "<tr><td><img src='" . $arrRunLeaderDataIndividual["RunLeaderPhotoLink"] . "' style='width:200px;height:250px;'/></td><td>" . $arrRunLeaderDataIndividual["RunnerName"] . "</td><tr>";
-	}
-?>
-			</table>
-			<p>This week's training route:<br>
+		</td>
+		<td>
+			<p><b>This week's Instructions:</b><br>
 			<table>
 <?php
 	//loop through the training array
 	foreach($arrTrainingDataFull as $arrTrainingDataIndividual)
 	{
-		echo "<tr><td><img src='" . $arrTrainingDataIndividual["RouteImageLink"] . "' style='width:50%;height:50%;'/></td><td>" . $arrTrainingDataIndividual["RouteDescription"] . "</td><tr>";
+		$originalText = undoSanitisedInput($arrTrainingDataIndividual["RouteDescription"]);
+		
+		echo "<tr><td><img src='" . $arrTrainingDataIndividual["RouteImageLink"] . "' style='width:50%;height:50%;'/></td><td>" . $originalText . "</td><tr>";
 	}
 ?>
+
 			</table>
+		</td>
+		</tr>
+		</table>
 			</p>
 			<p>
 				Please check back here for training updates
 			</p>
 
 		</div>
+<?php
+	include 'modules/floatingMenu.php';
+?>
 	</div>
     </body>
 </html>

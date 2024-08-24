@@ -31,12 +31,32 @@ else if (str_contains($_SESSION['role'], 'site admin') || str_contains($_SESSION
 
 
 ?>
-	<h1>Cumberland AC Training and Run Leader Admin - Navigation page</h1>
+	<h1>Cumberland AC Training and Run Leader Admin | Navigation</h1>
+
+<div class="photo-grid-container">
+<?php
+	$folderPath = 'media/training'; // Update this path to your folder
+	$images = glob($folderPath . '/RunLeader*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+
+	foreach($images as $image) {
+		echo '<div class="photo-grid-item">';
+		echo '<img src="' . $image . '" alt="Image">';
+		echo '</div>';
+	}
+?>
+</div>
 	<h2>What do you want to do?</h2>
-	<a href = "updateTrainingRunLeader_NewRunLeader.php">Add a new run leader</a><br>
-	<a href = "updateTrainingRunLeader_UpdateRunLeader.php">Update a run leader profile (add, change or remove a profile photo)</a>
-
-
+	<h3>Run leader admin</h3>
+	<a href = "updateTrainingRunLeader_SetActiveRunLeader.php">Select who's run leading this week</a>
+<!--	<a href = "updateTrainingRunLeader_NewRunLeader.php">Add a new run leader</a>
+	<br><a href = "updateTrainingRunLeader_UpdateRunLeader.php">Update a run leader profile (add, change or remove a photo)</a>
+	<br><a href = "updateTrainingRunLeader_RemoveRunLeader.php">Remove a run leader</a>
+-->	<h3>Thursday Training Notes</h3>
+<!--	<br><a href = "updateTrainingRunLeader_NewTrainingMap.php">Add a new training map (add, change or remove a map)</a> -->
+	<br><a href = "updateTrainingRunLeader_UpdateTrainingInstructions.php">Enter location and training notes for this week's Thursday training session</a>
+	<h3>Navigation</h3>
+	<br><a href = "adminLanding.php">Back to Admin home</a>
+	<br><a href = "logout.php">Logout</a>
 <?php
 }
 	$conn->close();

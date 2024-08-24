@@ -1,5 +1,8 @@
 <?php
-	session_start();
+	if(session_status() === PHP_SESSION_NONE) {
+		session_start();
+	}
+	$callingPage = "updateMemberDetails.php";
     include('secure/authenticate.php');
 	$RaceYear = "2024";
 ?>

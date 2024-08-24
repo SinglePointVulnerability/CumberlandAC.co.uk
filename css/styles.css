@@ -115,8 +115,43 @@
 		overflow-wrap: break-word;
 		resize: none;		
 	}
+	.photo-grid-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+		gap: 10px;
+		width: 90%;
+		max-width: 600px;	
+	}
+	.photo-grid-item img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
 /* Update Member Details */
 
+/* Update training instructions */
+	.training-instructions-textarea {
+		width: 100%;
+		height: 100px;
+	}
+	.training-instructions-sanitised {
+		display: none;
+		visibility: hidden;
+	}
+/* Update training instructions */
+
+/* Welfare officers */
+        .officer {
+            margin: 20px 0;
+        }
+        .officer-name {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .officer-contact {
+            margin-top: 5px;
+        }
+/* Welfare officers */
 
 /* -- The animation code -- */
 /* - modified date added to image URLs to ensure cache refresh following changes - */
